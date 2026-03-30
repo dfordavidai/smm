@@ -1571,41 +1571,49 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 <!-- ═══════════════════════════════════════ VIDEO STUDIO ═══ -->
 <div id="video-studio" class="section">
 
-  <!-- Studio Header -->
   <div id="vsBrowserWarning" class="alert alert-warn" style="display:none;margin-bottom:1rem">
-    ⚠️ <strong>Browser Warning:</strong> Video recording works best in <strong>Chrome or Edge</strong>. Safari/Firefox may not support canvas video capture. Switch browsers for best results.
+    ⚠️ <strong>Browser Warning:</strong> Video recording works best in <strong>Chrome or Edge</strong>. Safari/Firefox may have limited canvas capture support.
   </div>
-  <div class="card card-accent" style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(236,72,153,.1));border-color:rgba(99,102,241,.35)">
-    <div class="card-title" style="font-size:1.3rem">🎬 Video Studio — Script to Voice to Video</div>
-    <div class="card-sub">Write your script → AI enhances it → Real voice reads it → Canvas renders your video → Download & post to TikTok, Instagram, X</div>
-    <div class="grid g3" style="margin-top:.75rem">
-      <div class="metric-card"><div class="metric-val" style="font-size:1.2rem">🧠</div><div class="metric-label">AI Script Engine</div></div>
-      <div class="metric-card"><div class="metric-val" style="font-size:1.2rem">🎙️</div><div class="metric-label">Real Human Voices</div></div>
-      <div class="metric-card"><div class="metric-val" style="font-size:1.2rem">📹</div><div class="metric-label">Video Export</div></div>
+
+  <!-- HERO HEADER -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(236,72,153,.15),rgba(16,185,129,.1));border-color:rgba(99,102,241,.4);margin-bottom:1rem;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2220%22 cy=%2220%22 r=%2240%22 fill=%22rgba(99,102,241,0.05)%22/><circle cx=%2280%22 cy=%2280%22 r=%2230%22 fill=%22rgba(236,72,153,0.05)%22/></svg>');pointer-events:none"></div>
+    <div style="position:relative">
+      <div class="card-title" style="font-size:1.4rem;margin-bottom:.25rem">🎬 CinematicAI Video Studio</div>
+      <div class="card-sub" style="margin-bottom:1rem;font-size:.9rem">Write a script → AI enhances it → Choose a cinematic scene → Real voice narrates → Export HD video ready for YouTube, TikTok & Instagram</div>
+      <div class="grid g4">
+        <div class="metric-card"><div class="metric-val" style="font-size:1.1rem">🎨</div><div class="metric-label">12 Cinematic Scenes</div></div>
+        <div class="metric-card"><div class="metric-val" style="font-size:1.1rem">🔥</div><div class="metric-label">Particle Physics</div></div>
+        <div class="metric-card"><div class="metric-val" style="font-size:1.1rem">🎙️</div><div class="metric-label">Real Human Voice</div></div>
+        <div class="metric-card"><div class="metric-val" style="font-size:1.1rem">📹</div><div class="metric-label">HD MP4 Export</div></div>
+      </div>
     </div>
   </div>
 
-  <div class="grid g2">
-    <!-- LEFT: Script & Voice -->
+  <div class="grid g2" style="align-items:start">
+    <!-- LEFT PANEL -->
     <div>
 
-      <!-- STEP 1: Script -->
+      <!-- STEP 1: SCRIPT -->
       <div class="card">
-        <div class="card-title">📝 Step 1 — Your Script</div>
-        <div class="card-sub">Write it raw or let AI write & enhance it for you</div>
+        <div class="card-title">📝 Step 1 — Script</div>
+        <div class="card-sub">AI writes a viral script from your topic</div>
 
         <div class="field">
           <label class="label">Platform</label>
           <div class="platform-grid" id="vsPlatformGrid">
             <button class="platform-btn active" data-val="tiktok" onclick="vsSelectPlatform(this)"><span>🎵</span>TikTok</button>
             <button class="platform-btn" data-val="instagram" onclick="vsSelectPlatform(this)"><span>📱</span>Instagram</button>
+            <button class="platform-btn" data-val="youtube" onclick="vsSelectPlatform(this)"><span>▶️</span>YouTube</button>
             <button class="platform-btn" data-val="twitter" onclick="vsSelectPlatform(this)"><span>🐦</span>X/Twitter</button>
+            <button class="platform-btn" data-val="linkedin" onclick="vsSelectPlatform(this)"><span>💼</span>LinkedIn</button>
+            <button class="platform-btn" data-val="facebook" onclick="vsSelectPlatform(this)"><span>👥</span>Facebook</button>
           </div>
           <input type="hidden" id="vsPlatform" value="tiktok">
         </div>
 
         <div class="field">
-          <label class="label">Video Duration</label>
+          <label class="label">Duration</label>
           <div class="tags">
             <div class="tag active" onclick="selectTag(this,'vsDuration','15')">15s</div>
             <div class="tag" onclick="selectTag(this,'vsDuration','30')">30s</div>
@@ -1624,10 +1632,10 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
           <label class="label">Script Tone</label>
           <div class="tags">
             <div class="tag active" onclick="selectTag(this,'vsTone','hook-heavy')">🎣 Hook-Heavy</div>
-            <div class="tag" onclick="selectTag(this,'vsTone','storytelling')">📖 Storytelling</div>
+            <div class="tag" onclick="selectTag(this,'vsTone','storytelling')">📖 Story</div>
             <div class="tag" onclick="selectTag(this,'vsTone','educational')">📚 Educational</div>
-            <div class="tag" onclick="selectTag(this,'vsTone','hype')">🔥 Hype / Energy</div>
-            <div class="tag" onclick="selectTag(this,'vsTone','calm')">🧘 Calm Authority</div>
+            <div class="tag" onclick="selectTag(this,'vsTone','hype')">🔥 Hype</div>
+            <div class="tag" onclick="selectTag(this,'vsTone','calm')">🧘 Calm</div>
           </div>
           <input type="hidden" id="vsTone" value="hook-heavy">
         </div>
@@ -1635,34 +1643,39 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
         <button class="btn btn-primary" id="vsGenScriptBtn" onclick="vsGenerateScript()" style="margin-bottom:.75rem">🧠 AI Write Script</button>
 
         <div class="field">
-          <label class="label">Final Script (edit freely)</label>
+          <label class="label">Script <span id="vsWordEstimate" style="font-weight:400;color:var(--muted)"></span></label>
           <div class="input-wrap">
-            <textarea class="textarea" id="vsScript" placeholder="Your script will appear here — or type/paste your own..." oninput="updateCharCount(this,'vsScriptCount',1000);vsUpdateWordEstimate()" style="min-height:180px;font-size:.88rem;line-height:1.7"></textarea>
+            <textarea class="textarea" id="vsScript" placeholder="Your script will appear here — or type/paste your own..." oninput="updateCharCount(this,'vsScriptCount',1000);vsUpdateWordEstimate();vsExtractKeywords()" style="min-height:180px;font-size:.88rem;line-height:1.7"></textarea>
             <div class="char-counter" id="vsScriptCount">0 / 1000</div>
           </div>
-          <div id="vsWordEstimate" style="font-size:.75rem;color:var(--muted);margin-top:.25rem">Est. read time: — sec</div>
         </div>
 
-        <button class="btn btn-secondary" id="vsEnhanceBtn" onclick="vsEnhanceScript()" style="margin-bottom:.5rem">✨ AI Enhance Script</button>
+        <div style="display:flex;gap:.5rem">
+          <button class="btn btn-secondary" id="vsEnhanceBtn" onclick="vsEnhanceScript()" style="flex:1">✨ AI Enhance</button>
+          <button class="btn btn-secondary" onclick="vsParseToSlides()" style="flex:1">📑 Split to Slides</button>
+        </div>
+
+        <!-- Detected keywords -->
+        <div id="vsKeywordBar" style="display:none;margin-top:.75rem;padding:.75rem;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:10px">
+          <div style="font-size:.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">🎯 Detected Themes — Scene Auto-Match</div>
+          <div id="vsKeywordTags" style="display:flex;flex-wrap:wrap;gap:.375rem"></div>
+        </div>
       </div>
 
-      <!-- STEP 2: Voice -->
+      <!-- STEP 2: VOICE -->
       <div class="card">
-        <div class="card-title">🎙️ Step 2 — Voice Selection</div>
-        <div class="card-sub">All voices are real browser Text-to-Speech — no API needed. 100% free.</div>
+        <div class="card-title">🎙️ Step 2 — Voice</div>
+        <div class="card-sub">100% free browser Text-to-Speech — real human-like voices</div>
 
-        <div class="field">
-          <label class="label">Voice Category</label>
-          <div class="tabs" style="margin-bottom:.75rem">
-            <button class="tab active" onclick="vsFilterVoices('all',this)">All</button>
-            <button class="tab" onclick="vsFilterVoices('male',this)">Male</button>
-            <button class="tab" onclick="vsFilterVoices('female',this)">Female</button>
-            <button class="tab" onclick="vsFilterVoices('uk',this)">British</button>
-            <button class="tab" onclick="vsFilterVoices('us',this)">American</button>
-            <button class="tab" onclick="vsFilterVoices('au',this)">Australian</button>
-          </div>
-          <div id="vsVoiceGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;max-height:280px;overflow-y:auto;padding-right:.25rem"></div>
+        <div class="tabs" style="margin-bottom:.75rem">
+          <button class="tab active" onclick="vsFilterVoices('all',this)">All</button>
+          <button class="tab" onclick="vsFilterVoices('male',this)">Male</button>
+          <button class="tab" onclick="vsFilterVoices('female',this)">Female</button>
+          <button class="tab" onclick="vsFilterVoices('uk',this)">British</button>
+          <button class="tab" onclick="vsFilterVoices('us',this)">American</button>
+          <button class="tab" onclick="vsFilterVoices('au',this)">Australian</button>
         </div>
+        <div id="vsVoiceGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;max-height:240px;overflow-y:auto;padding-right:.25rem"></div>
 
         <div class="grid g2" style="margin-top:.75rem">
           <div class="field">
@@ -1677,66 +1690,72 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
           </div>
         </div>
 
-        <button class="btn btn-success" id="vsPreviewBtn" onclick="vsPreviewVoice()" style="margin-bottom:.5rem">▶️ Preview Voice</button>
-        <button class="btn btn-danger btn-sm" id="vsStopBtn" onclick="vsStopVoice()" style="display:none;margin-bottom:.5rem;width:auto">⏹ Stop</button>
-
+        <div style="display:flex;gap:.5rem">
+          <button class="btn btn-success" id="vsPreviewBtn" onclick="vsPreviewVoice()" style="flex:1">▶️ Preview Voice</button>
+          <button class="btn btn-danger btn-sm" id="vsStopBtn" onclick="vsStopVoice()" style="display:none;width:auto;padding:.75rem 1rem">⏹</button>
+        </div>
         <div id="vsVoiceStatus" style="margin-top:.5rem;font-size:.78rem;color:var(--muted)"></div>
       </div>
-    </div>
 
-    <!-- RIGHT: Visual Design & Preview -->
-    <div>
-
-      <!-- STEP 3: Visual Design -->
+      <!-- STEP 3: CAPTION STYLE -->
       <div class="card">
-        <div class="card-title">🎨 Step 3 — Visual Design</div>
-        <div class="card-sub">Design how your text appears on screen</div>
+        <div class="card-title">✍️ Step 3 — Caption Style</div>
+        <div class="card-sub">How your words appear on screen</div>
 
         <div class="field">
-          <label class="label">Background Style</label>
-          <div id="vsBgGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.25rem"></div>
-          <input type="hidden" id="vsBgStyle" value="0">
+          <label class="label">Caption Animation</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+            <div class="tool-card" id="captStyle_word" onclick="vsSelectCaptionStyle('word-pop',this)" style="padding:.75rem;border-color:var(--accent);background:rgba(99,102,241,.1)">
+              <div style="font-size:1.2rem">💥</div>
+              <div class="tool-title" style="font-size:.78rem">Word Pop</div>
+              <div class="tool-desc" style="font-size:.68rem">TikTok style</div>
+            </div>
+            <div class="tool-card" id="captStyle_karaoke" onclick="vsSelectCaptionStyle('karaoke',this)" style="padding:.75rem">
+              <div style="font-size:1.2rem">🎤</div>
+              <div class="tool-title" style="font-size:.78rem">Karaoke</div>
+              <div class="tool-desc" style="font-size:.68rem">Highlight sync</div>
+            </div>
+            <div class="tool-card" id="captStyle_subtitle" onclick="vsSelectCaptionStyle('subtitle',this)" style="padding:.75rem">
+              <div style="font-size:1.2rem">📺</div>
+              <div class="tool-title" style="font-size:.78rem">Subtitle Bar</div>
+              <div class="tool-desc" style="font-size:.68rem">Netflix style</div>
+            </div>
+            <div class="tool-card" id="captStyle_slam" onclick="vsSelectCaptionStyle('slam',this)" style="padding:.75rem">
+              <div style="font-size:1.2rem">🔨</div>
+              <div class="tool-title" style="font-size:.78rem">Slam In</div>
+              <div class="tool-desc" style="font-size:.68rem">Impact style</div>
+            </div>
+            <div class="tool-card" id="captStyle_glitch" onclick="vsSelectCaptionStyle('glitch',this)" style="padding:.75rem">
+              <div style="font-size:1.2rem">⚡</div>
+              <div class="tool-title" style="font-size:.78rem">Glitch</div>
+              <div class="tool-desc" style="font-size:.68rem">Cyber style</div>
+            </div>
+            <div class="tool-card" id="captStyle_typewriter" onclick="vsSelectCaptionStyle('typewriter',this)" style="padding:.75rem">
+              <div style="font-size:1.2rem">⌨️</div>
+              <div class="tool-title" style="font-size:.78rem">Typewriter</div>
+              <div class="tool-desc" style="font-size:.68rem">Classic reveal</div>
+            </div>
+          </div>
+          <input type="hidden" id="vsCaptionStyle" value="word-pop">
         </div>
 
         <div class="grid g2">
           <div class="field">
             <label class="label">Text Color</label>
-            <div style="display:flex;gap:.5rem;align-items:center">
-              <input type="color" id="vsTextColor" value="#ffffff" style="width:40px;height:36px;border:none;border-radius:6px;cursor:pointer;background:none;padding:0">
-              <div class="tags" style="flex:1;margin:0">
-                <div class="tag active" onclick="vsSetTextColor('#ffffff',this)">White</div>
-                <div class="tag" onclick="vsSetTextColor('#000000',this)">Black</div>
-                <div class="tag" onclick="vsSetTextColor('#FFE600',this)">Yellow</div>
-              </div>
+            <div style="display:flex;gap:.375rem;flex-wrap:wrap">
+              <div class="tag active" onclick="vsSetTextColor('#FFFFFF',this)">⬜ White</div>
+              <div class="tag" onclick="vsSetTextColor('#000000',this)">⬛ Black</div>
+              <div class="tag" onclick="vsSetTextColor('#FFE600',this)">🟡 Yellow</div>
+              <div class="tag" onclick="vsSetTextColor('#FF3B3B',this)">🔴 Red</div>
+              <div class="tag" onclick="vsSetTextColor('#00FF88',this)">🟢 Neon</div>
+              <div class="tag" onclick="vsSetTextColor('#60A5FA',this)">🔵 Blue</div>
             </div>
+            <input type="hidden" id="vsTextColor" value="#FFFFFF">
           </div>
-          <div class="field">
-            <label class="label">Text Style</label>
-            <div class="tags">
-              <div class="tag active" onclick="selectTag(this,'vsTextStyle','bold')">Bold</div>
-              <div class="tag" onclick="selectTag(this,'vsTextStyle','shadow')">Shadow</div>
-              <div class="tag" onclick="selectTag(this,'vsTextStyle','outline')">Outline</div>
-              <div class="tag" onclick="selectTag(this,'vsTextStyle','glow')">Glow</div>
-            </div>
-            <input type="hidden" id="vsTextStyle" value="bold">
-          </div>
-        </div>
-
-        <div class="grid g2">
           <div class="field">
             <label class="label">Font Size</label>
-            <input type="range" id="vsFontSize" min="24" max="72" step="2" value="42" oninput="document.getElementById('vsFontSizeLabel').textContent=this.value+'px';vsRenderPreview()" style="width:100%;accent-color:var(--accent)">
-            <div style="text-align:center;font-size:.72rem;color:var(--muted)" id="vsFontSizeLabel">42px</div>
-          </div>
-          <div class="field">
-            <label class="label">Text Animation</label>
-            <select class="select" id="vsTextAnim" onchange="vsRenderPreview()">
-              <option value="word-by-word">Word by Word (TikTok style)</option>
-              <option value="typewriter">Typewriter</option>
-              <option value="fade-lines">Fade Lines</option>
-              <option value="subtitle">Subtitle (bottom bar)</option>
-              <option value="full">Full Script</option>
-            </select>
+            <input type="range" id="vsFontSize" min="24" max="76" step="2" value="44" oninput="document.getElementById('vsFontSizeLabel').textContent=this.value+'px';vsRenderPreview()" style="width:100%;accent-color:var(--accent)">
+            <div style="text-align:center;font-size:.72rem;color:var(--muted)" id="vsFontSizeLabel">44px</div>
           </div>
         </div>
 
@@ -1746,73 +1765,164 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
         </div>
       </div>
 
-      <!-- STEP 4: Canvas Preview -->
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div>
+
+      <!-- STEP 4: SCENE ENGINE -->
       <div class="card">
-        <div class="card-title">👁️ Step 4 — Live Preview</div>
-        <div style="display:flex;justify-content:center;margin:.5rem 0">
-          <div style="position:relative;display:inline-block">
-            <canvas id="vsCanvas" width="405" height="720" style="border-radius:16px;border:2px solid var(--border-active);max-width:100%;display:block;box-shadow:0 20px 60px rgba(0,0,0,.5)"></canvas>
-            <div id="vsPlayOverlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:16px;pointer-events:none">
-              <div id="vsPlayIcon" style="width:64px;height:64px;background:rgba(99,102,241,.8);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(99,102,241,.5)">▶️</div>
-            </div>
+        <div class="card-title">🎬 Step 4 — Cinematic Scene</div>
+        <div class="card-sub">Real animated backgrounds rendered at 30fps — every scene is unique</div>
+
+        <div id="vsSceneGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.75rem"></div>
+        <input type="hidden" id="vsScene" value="space">
+
+        <!-- Scene intensity -->
+        <div class="field">
+          <label class="label">Scene Intensity</label>
+          <input type="range" id="vsIntensity" min="0.2" max="1" step="0.05" value="0.7" oninput="document.getElementById('vsIntensityLabel').textContent=Math.round(this.value*100)+'%';vsRenderPreview()" style="width:100%;accent-color:var(--accent)">
+          <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:.25rem"><span>Subtle</span><span id="vsIntensityLabel">70%</span><span>Intense</span></div>
+        </div>
+
+        <!-- Color overlay -->
+        <div class="field">
+          <label class="label">Color Tint Overlay</label>
+          <div class="tags">
+            <div class="tag active" onclick="vsSetTint('none',this)">None</div>
+            <div class="tag" onclick="vsSetTint('gold',this)">🟡 Gold</div>
+            <div class="tag" onclick="vsSetTint('blue',this)">🔵 Blue</div>
+            <div class="tag" onclick="vsSetTint('red',this)">🔴 Red</div>
+            <div class="tag" onclick="vsSetTint('green',this)">🟢 Matrix</div>
+            <div class="tag" onclick="vsSetTint('purple',this)">🟣 Purple</div>
+          </div>
+          <input type="hidden" id="vsTint" value="none">
+        </div>
+
+        <!-- Lower third elements -->
+        <div class="field">
+          <label class="label">Lower Third / Overlay Graphics</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.375rem">
+            <label style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;cursor:pointer;padding:.5rem;background:var(--bg3);border-radius:8px;border:1px solid var(--border)">
+              <input type="checkbox" id="vsShowProgress" onchange="vsRenderPreview()" checked> Progress bar
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;cursor:pointer;padding:.5rem;background:var(--bg3);border-radius:8px;border:1px solid var(--border)">
+              <input type="checkbox" id="vsShowLogo" onchange="vsRenderPreview()"> Brand logo frame
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;cursor:pointer;padding:.5rem;background:var(--bg3);border-radius:8px;border:1px solid var(--border)">
+              <input type="checkbox" id="vsShowEmoji" onchange="vsRenderPreview()" checked> Animated emoji
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;cursor:pointer;padding:.5rem;background:var(--bg3);border-radius:8px;border:1px solid var(--border)">
+              <input type="checkbox" id="vsShowCTA" onchange="vsRenderPreview()"> Follow CTA badge
+            </label>
           </div>
         </div>
-        <button class="btn btn-secondary" onclick="vsRenderPreview()" style="margin-bottom:.5rem">🔄 Refresh Preview</button>
+      </div>
+
+      <!-- STEP 5: LIVE PREVIEW -->
+      <div class="card">
+        <div class="card-title">👁️ Step 5 — Live Preview</div>
+        <div style="display:flex;justify-content:center;margin:.5rem 0;position:relative">
+          <div style="position:relative;display:inline-block">
+            <canvas id="vsCanvas" width="405" height="720" style="border-radius:16px;border:2px solid rgba(99,102,241,.5);max-width:100%;display:block;box-shadow:0 20px 60px rgba(0,0,0,.6)"></canvas>
+            <!-- FPS counter -->
+            <div id="vsFpsCounter" style="position:absolute;top:8px;left:12px;font-size:.65rem;color:rgba(255,255,255,.4);font-family:monospace;pointer-events:none">30fps</div>
+          </div>
+        </div>
+
+        <!-- Slide previews -->
+        <div id="vsSlideStrip" style="display:none;margin-top:.75rem">
+          <div style="font-size:.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">SLIDES</div>
+          <div id="vsSlideList" style="display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem"></div>
+        </div>
+
+        <div style="display:flex;gap:.5rem;margin-top:.75rem">
+          <button class="btn btn-secondary" onclick="vsRenderPreview()" style="flex:1">🔄 Refresh</button>
+          <button class="btn btn-secondary" onclick="vsLivePreviewToggle()" id="vsLiveBtn" style="flex:1">▶️ Animate</button>
+        </div>
       </div>
 
     </div>
   </div>
 
-  <!-- STEP 5: Generate & Export -->
-  <div class="card card-accent">
-    <div class="card-title">🚀 Step 5 — Generate & Export Video</div>
-    <div class="card-sub">Renders your video with synchronized voice + text animations. Downloads as MP4 ready to upload.</div>
+  <!-- STEP 6: GENERATE & EXPORT -->
+  <div class="card card-accent" style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(16,185,129,.08));border-color:rgba(99,102,241,.35)">
+    <div class="card-title" style="font-size:1.2rem">🚀 Step 6 — Generate & Export HD Video</div>
+    <div class="card-sub">Renders at 30fps with synchronized voice + animated scene + kinetic captions. Downloads as MP4 ready to post.</div>
 
-    <div class="grid g3" style="margin-bottom:1rem">
-      <div style="background:var(--bg3);border-radius:10px;padding:1rem;border:1px solid var(--border);text-align:center">
-        <div style="font-size:1.5rem;margin-bottom:.25rem">📐</div>
-        <div style="font-weight:700;font-size:.85rem;color:#fff" id="vsFormatLabel">9:16 · TikTok / Reels</div>
-        <div style="font-size:.72rem;color:var(--muted)">405 × 720px</div>
+    <!-- Pre-render stats -->
+    <div class="grid g4" style="margin-bottom:1.25rem">
+      <div style="background:var(--bg3);border-radius:10px;padding:.875rem;border:1px solid var(--border);text-align:center">
+        <div style="font-size:1.4rem;margin-bottom:.2rem">📐</div>
+        <div style="font-weight:700;font-size:.82rem;color:#fff" id="vsFormatLabel">9:16 · TikTok / Reels</div>
+        <div style="font-size:.7rem;color:var(--muted)">405 × 720px</div>
       </div>
-      <div style="background:var(--bg3);border-radius:10px;padding:1rem;border:1px solid var(--border);text-align:center">
-        <div style="font-size:1.5rem;margin-bottom:.25rem">🎙️</div>
-        <div style="font-weight:700;font-size:.85rem;color:#fff" id="vsVoiceLabel">No voice selected</div>
-        <div style="font-size:.72rem;color:var(--muted)">Browser TTS</div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.875rem;border:1px solid var(--border);text-align:center">
+        <div style="font-size:1.4rem;margin-bottom:.2rem">🎙️</div>
+        <div style="font-weight:700;font-size:.82rem;color:#fff" id="vsVoiceLabel">No voice selected</div>
+        <div style="font-size:.7rem;color:var(--muted)">Browser TTS</div>
       </div>
-      <div style="background:var(--bg3);border-radius:10px;padding:1rem;border:1px solid var(--border);text-align:center">
-        <div style="font-size:1.5rem;margin-bottom:.25rem">⏱️</div>
-        <div style="font-weight:700;font-size:.85rem;color:#fff" id="vsDurationLabel">~15 sec</div>
-        <div style="font-size:.72rem;color:var(--muted)">Estimated</div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.875rem;border:1px solid var(--border);text-align:center">
+        <div style="font-size:1.4rem;margin-bottom:.2rem">🎬</div>
+        <div style="font-weight:700;font-size:.82rem;color:#fff" id="vsSceneLabel">Space</div>
+        <div style="font-size:.7rem;color:var(--muted)">Cinematic scene</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.875rem;border:1px solid var(--border);text-align:center">
+        <div style="font-size:1.4rem;margin-bottom:.2rem">⏱️</div>
+        <div style="font-weight:700;font-size:.82rem;color:#fff" id="vsDurationLabel">~15 sec</div>
+        <div style="font-size:.7rem;color:var(--muted)">Video length</div>
       </div>
     </div>
 
-    <!-- Progress bar -->
+    <!-- Render quality -->
+    <div class="field">
+      <label class="label">Export Quality</label>
+      <div class="tags">
+        <div class="tag" onclick="selectTag(this,'vsQuality','draft')">⚡ Draft (fast)</div>
+        <div class="tag active" onclick="selectTag(this,'vsQuality','standard')">📹 Standard</div>
+        <div class="tag" onclick="selectTag(this,'vsQuality','hd')">🌟 HD Best</div>
+      </div>
+      <input type="hidden" id="vsQuality" value="standard">
+    </div>
+
+    <!-- Progress -->
     <div id="vsProgressWrap" style="display:none;margin-bottom:1rem">
       <div style="display:flex;justify-content:space-between;margin-bottom:.375rem;font-size:.78rem;color:var(--muted)">
         <span id="vsProgressLabel">Rendering...</span>
         <span id="vsProgressPct">0%</span>
       </div>
-      <div style="background:rgba(255,255,255,.06);border-radius:100px;height:8px;overflow:hidden">
-        <div id="vsProgressBar" style="height:100%;background:var(--grd);border-radius:100px;transition:width .3s;width:0%"></div>
+      <div style="background:rgba(255,255,255,.06);border-radius:100px;height:10px;overflow:hidden">
+        <div id="vsProgressBar" style="height:100%;background:linear-gradient(90deg,#6366f1,#ec4899,#10b981);border-radius:100px;transition:width .2s;width:0%"></div>
       </div>
+      <div id="vsRenderLog" style="margin-top:.5rem;font-size:.72rem;color:var(--muted);font-family:monospace;max-height:60px;overflow-y:auto"></div>
     </div>
 
-    <div class="grid g2">
-      <button class="btn btn-primary" id="vsRecordBtn" onclick="vsStartRecording()">🎬 Record & Generate Video</button>
-      <button class="btn btn-secondary" id="vsDownloadBtn" onclick="vsDownloadVideo()" style="display:none">⬇️ Download MP4</button>
+    <div class="grid g2" style="margin-bottom:.75rem">
+      <button class="btn btn-primary" id="vsRecordBtn" onclick="vsStartRecording()" style="font-size:1rem;padding:1rem">🎬 Render & Export Video</button>
+      <button class="btn btn-secondary" id="vsDownloadBtn" onclick="vsDownloadVideo()" style="display:none;font-size:1rem;padding:1rem">⬇️ Download MP4</button>
     </div>
 
-    <div id="vsRecordStatus" style="margin-top:.75rem;font-size:.82rem;color:var(--muted)"></div>
+    <div id="vsRecordStatus" style="font-size:.82rem;color:var(--muted)"></div>
 
-    <!-- Video playback after render -->
+    <!-- Output -->
     <div id="vsVideoResult" style="display:none;margin-top:1rem">
-      <label class="label">Generated Video</label>
-      <video id="vsOutputVideo" controls style="width:100%;max-width:300px;display:block;margin:.5rem auto;border-radius:12px;border:1px solid var(--border)"></video>
-      <div class="alert alert-success" style="margin-top:.75rem">✅ Video ready! Download it and upload to TikTok, Instagram Reels, or X.</div>
+      <div class="grid g2">
+        <div>
+          <label class="label">Generated Video</label>
+          <video id="vsOutputVideo" controls playsinline style="width:100%;border-radius:12px;border:2px solid rgba(99,102,241,.4);box-shadow:0 10px 40px rgba(0,0,0,.5)"></video>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.5rem;justify-content:center">
+          <div class="alert alert-success">✅ <strong>Video ready!</strong> Download and upload directly to TikTok, Instagram Reels, YouTube Shorts, or X.</div>
+          <div class="alert alert-info" style="font-size:.78rem">💡 <strong>Pro Tip:</strong> Upload within 2 hours of creation for maximum platform algorithm boost. Use the AI Writer to generate a matching caption.</div>
+          <button class="btn btn-secondary" onclick="vsStartNew()">🔄 Create New Video</button>
+        </div>
+      </div>
     </div>
   </div>
 
 </div>
+
+
 
 <!-- ═══════════════════════════════════════ SETTINGS ═══ -->
 <div id="settings" class="section">
@@ -4183,8 +4293,9 @@ function renderStatCards(stats, title) {
 // postTiming toggle handled by selectPostTiming()
 
 
+
 // ═══════════════════════════════════════════════════════════════
-// VIDEO STUDIO — ENGINE
+// VIDEO STUDIO — CINEMATIC ENGINE v3.0
 // ═══════════════════════════════════════════════════════════════
 
 const VS = {
@@ -4197,188 +4308,1166 @@ const VS = {
   currentWordIndex: 0,
   words: [],
   scriptSegments: [],
+  livePreviewActive: false,
+  liveFrame: 0,
+  slides: [],
+  currentSlide: 0,
+  lastFpsTime: 0,
+  frameCount: 0,
+  fps: 30,
+  particles: [],
+  stars: [],
+  fireParticles: [],
+  matrixChars: [],
+  wavePoints: [],
+  geometryShapes: [],
+  cityLights: [],
+  bokehCircles: [],
+  glitchOffset: 0,
+  sceneTime: 0,
 
-  BG_PRESETS: [
-    { label: 'Dark Gradient', type: 'gradient', colors: ['#0a0a1a','#1a0a2e','#0a1a2e'] },
-    { label: 'Purple Fire', type: 'gradient', colors: ['#1a0033','#4a0080','#ff00aa'] },
-    { label: 'Ocean Deep', type: 'gradient', colors: ['#000428','#004e92','#009ffd'] },
-    { label: 'Black Gold', type: 'gradient', colors: ['#0f0c29','#302b63','#24243e'] },
-    { label: 'Neon Green', type: 'gradient', colors: ['#000000','#0a2a0a','#00ff41'] },
-    { label: 'Sunset', type: 'gradient', colors: ['#1a1a2e','#e94560','#f5a623'] },
-    { label: 'Pure Black', type: 'solid', colors: ['#000000'] },
-    { label: 'Charcoal', type: 'solid', colors: ['#111111'] },
-  ]
+  SCENES: [
+    { id: 'space',     label: 'Space',      emoji: '🌌', desc: 'Stars & nebula',    keywords: ['universe','space','dream','infinite','night','sky','stars'] },
+    { id: 'fire',      label: 'Fire',       emoji: '🔥', desc: 'Flames & embers',   keywords: ['fire','hot','passion','energy','burn','heat','power'] },
+    { id: 'matrix',    label: 'Matrix',     emoji: '💚', desc: 'Code rain',         keywords: ['tech','code','hack','digital','ai','data','system','money'] },
+    { id: 'ocean',     label: 'Ocean',      emoji: '🌊', desc: 'Wave depths',       keywords: ['ocean','water','flow','calm','deep','wave','relax'] },
+    { id: 'neon',      label: 'Neon City',  emoji: '🏙️', desc: 'Cyberpunk city',   keywords: ['city','night','urban','crypto','business','hustle','wealth'] },
+    { id: 'bokeh',     label: 'Bokeh',      emoji: '✨', desc: 'Light particles',   keywords: ['light','beauty','love','nature','life','happy','joy'] },
+    { id: 'geometry',  label: 'Geometry',   emoji: '🔷', desc: 'Sacred geometry',   keywords: ['mind','focus','strategy','growth','build','create','design'] },
+    { id: 'smoke',     label: 'Smoke',      emoji: '💨', desc: 'Ink smoke',         keywords: ['mystery','secret','reveal','dark','shadow','hidden'] },
+    { id: 'lightning', label: 'Lightning',  emoji: '⚡', desc: 'Electric storm',    keywords: ['power','shock','fast','speed','unstoppable','energy'] },
+    { id: 'confetti',  label: 'Confetti',   emoji: '🎊', desc: 'Celebration',       keywords: ['win','success','celebrate','earn','profit','rich','goal'] },
+    { id: 'aurora',    label: 'Aurora',     emoji: '🌈', desc: 'Northern lights',   keywords: ['change','new','transform','evolve','inspire','vision'] },
+    { id: 'lava',      label: 'Lava',       emoji: '🌋', desc: 'Molten lava',       keywords: ['unstoppable','force','raw','primal','intense','destroy','bold'] },
+  ],
+
+  TINTS: {
+    none:   null,
+    gold:   'rgba(255,200,0,0.18)',
+    blue:   'rgba(30,100,255,0.18)',
+    red:    'rgba(220,30,30,0.18)',
+    green:  'rgba(0,220,80,0.18)',
+    purple: 'rgba(150,0,255,0.18)',
+  }
 };
 
-// ── Voice Loading ──
+// ── Scene Grid Renderer ──
+function vsRenderSceneGrid() {
+  const grid = document.getElementById('vsSceneGrid');
+  if (!grid) return;
+  grid.innerHTML = VS.SCENES.map(s => `
+    <div onclick="vsSelectScene('${s.id}',this)" data-scene="${s.id}"
+      style="padding:.6rem .4rem;border:2px solid ${s.id==='space'?'var(--accent)':'var(--border)'};border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;background:${s.id==='space'?'rgba(99,102,241,.12)':'var(--bg3)'}">
+      <div style="font-size:1.4rem">${s.emoji}</div>
+      <div style="font-size:.72rem;font-weight:700;color:#fff;margin:.2rem 0">${s.label}</div>
+      <div style="font-size:.62rem;color:var(--muted)">${s.desc}</div>
+    </div>`).join('');
+}
+
+function vsSelectScene(id, el) {
+  document.querySelectorAll('#vsSceneGrid > div').forEach(d => {
+    d.style.borderColor = 'var(--border)';
+    d.style.background = 'var(--bg3)';
+  });
+  if (el) { el.style.borderColor = 'var(--accent)'; el.style.background = 'rgba(99,102,241,.12)'; }
+  document.getElementById('vsScene').value = id;
+  const scene = VS.SCENES.find(s => s.id === id);
+  if (scene) document.getElementById('vsSceneLabel').textContent = scene.label;
+  vsInitSceneParticles(id);
+  vsRenderPreview();
+}
+
+function vsSetTint(val, el) {
+  document.getElementById('vsTint').value = val;
+  el.closest('.tags').querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  vsRenderPreview();
+}
+
+function vsSelectCaptionStyle(val, el) {
+  document.getElementById('vsCaptionStyle').value = val;
+  document.querySelectorAll('[id^="captStyle_"]').forEach(c => {
+    c.style.borderColor = 'var(--border)';
+    c.style.background = 'var(--bg3)';
+  });
+  if (el) { el.style.borderColor = 'var(--accent)'; el.style.background = 'rgba(99,102,241,.1)'; }
+  vsRenderPreview();
+}
+
+// ── Keyword extraction for auto-scene ──
+function vsExtractKeywords() {
+  const script = document.getElementById('vsScript')?.value.toLowerCase() || '';
+  if (script.length < 20) { document.getElementById('vsKeywordBar').style.display = 'none'; return; }
+
+  const allKeywords = VS.SCENES.flatMap(s => s.keywords.map(k => ({ keyword: k, scene: s.id, emoji: s.emoji })));
+  const found = allKeywords.filter(k => script.includes(k.keyword));
+  const unique = [...new Map(found.map(f => [f.scene, f])).values()];
+
+  if (unique.length === 0) { document.getElementById('vsKeywordBar').style.display = 'none'; return; }
+
+  document.getElementById('vsKeywordBar').style.display = 'block';
+  document.getElementById('vsKeywordTags').innerHTML = unique.slice(0, 5).map(u =>
+    `<span onclick="vsSelectScene('${u.scene}', document.querySelector('[data-scene=${u.scene}]'))"
+      style="padding:.25rem .6rem;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:100px;font-size:.72rem;cursor:pointer;color:var(--accent);font-weight:600">
+      ${u.emoji} ${VS.SCENES.find(s=>s.id===u.scene)?.label}
+    </span>`
+  ).join('');
+}
+
+function vsParseToSlides() {
+  const script = document.getElementById('vsScript')?.value.trim() || '';
+  if (!script) { toast('Add a script first', 'info'); return; }
+
+  // Split on sentence boundaries
+  VS.slides = script.split(/(?<=[.!?])\s+/).filter(s => s.trim().length > 3);
+  if (VS.slides.length === 0) VS.slides = [script];
+
+  const strip = document.getElementById('vsSlideStrip');
+  const list = document.getElementById('vsSlideList');
+  strip.style.display = 'block';
+
+  list.innerHTML = VS.slides.map((slide, i) =>
+    `<div onclick="VS.currentSlide=${i};vsRenderPreview()" style="flex-shrink:0;width:60px;height:100px;background:var(--bg3);border:2px solid ${i===0?'var(--accent)':'var(--border)'};border-radius:8px;cursor:pointer;padding:.25rem;display:flex;align-items:center;justify-content:center;overflow:hidden" title="${slide}">
+      <div style="font-size:.5rem;color:var(--muted);text-align:center;line-height:1.3;word-break:break-all">${slide.substring(0,50)}...</div>
+    </div>`
+  ).join('');
+
+  toast(`📑 Split into ${VS.slides.length} slides`, 'success');
+  vsRenderPreview();
+}
+
+// ── Particle System Initialization ──
+function vsInitSceneParticles(sceneId) {
+  VS.particles = [];
+  VS.stars = [];
+  VS.fireParticles = [];
+  VS.matrixChars = [];
+  VS.wavePoints = [];
+  VS.geometryShapes = [];
+  VS.cityLights = [];
+  VS.bokehCircles = [];
+  VS.sceneTime = 0;
+  const W = 405, H = 720;
+
+  if (sceneId === 'space') {
+    for (let i = 0; i < 220; i++) VS.stars.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*2.2, speed: Math.random()*0.4+0.1,
+      alpha: Math.random()*0.8+0.2, twinkle: Math.random()*Math.PI*2,
+      color: ['#ffffff','#aad4ff','#ffd4aa','#aaffdd'][Math.floor(Math.random()*4)]
+    });
+    // nebula clouds
+    for (let i = 0; i < 6; i++) VS.particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: 60+Math.random()*120, alpha: 0.03+Math.random()*0.06,
+      color: ['#6366f1','#ec4899','#10b981','#3b82f6'][Math.floor(Math.random()*4)],
+      drift: (Math.random()-0.5)*0.3, type:'nebula'
+    });
+  }
+
+  if (sceneId === 'fire') {
+    for (let i = 0; i < 180; i++) VS.fireParticles.push({
+      x: Math.random()*W, y: H + Math.random()*60,
+      vx: (Math.random()-0.5)*3, vy: -(Math.random()*5+2),
+      life: Math.random(), decay: 0.008+Math.random()*0.012,
+      size: Math.random()*18+4,
+      color: Math.random() > 0.5 ? '#ff4500' : Math.random()>0.5 ? '#ff8c00' : '#ffd700'
+    });
+    // Ember particles
+    for (let i = 0; i < 60; i++) VS.particles.push({
+      x: Math.random()*W, y: H-Math.random()*200,
+      vx: (Math.random()-0.5)*1.5, vy: -(Math.random()*2+0.5),
+      size: Math.random()*3+1, life: Math.random(),
+      color: Math.random()>0.5?'#ff6600':'#ffaa00', type:'ember'
+    });
+  }
+
+  if (sceneId === 'matrix') {
+    const chars = 'ｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏ0123456789ABCDEF$#@!%^&*';
+    for (let i = 0; i < 28; i++) VS.matrixChars.push({
+      x: (i * (W/28)), y: Math.random()*H, speed: 1.5+Math.random()*4,
+      chars: Array.from({length:20},()=>chars[Math.floor(Math.random()*chars.length)]),
+      spacing: 22, alpha: 0.7+Math.random()*0.3,
+      updateTimer: 0, updateRate: Math.floor(Math.random()*4)+2
+    });
+  }
+
+  if (sceneId === 'ocean') {
+    for (let i = 0; i < 3; i++) VS.wavePoints.push({
+      offset: Math.random()*Math.PI*2, speed: 0.02+Math.random()*0.01,
+      amplitude: 20+Math.random()*40, y: 250+i*80,
+      color: ['rgba(0,100,200,0.4)','rgba(0,150,220,0.35)','rgba(0,200,255,0.3)'][i]
+    });
+    for (let i = 0; i < 80; i++) VS.particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      size: Math.random()*4+1, alpha: Math.random()*0.3+0.1,
+      speed: Math.random()*0.5+0.1, angle: Math.random()*Math.PI*2,
+      type:'bubble'
+    });
+  }
+
+  if (sceneId === 'neon') {
+    for (let i = 0; i < 60; i++) VS.cityLights.push({
+      x: Math.random()*W, y: H*0.4+Math.random()*H*0.6,
+      w: 2+Math.random()*8, h: 2+Math.random()*5,
+      color: ['#ff0080','#00ffff','#ff8000','#8000ff','#00ff40','#ffff00'][Math.floor(Math.random()*6)],
+      blink: Math.random()>0.8, blinkRate: Math.random()*0.1, alpha: 0.5+Math.random()*0.5
+    });
+    // Add rain streaks
+    for (let i = 0; i < 100; i++) VS.particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      vy: 4+Math.random()*8, length: 8+Math.random()*20,
+      alpha: 0.1+Math.random()*0.3, type:'rain',
+      color: ['#00ffff','#ff00ff','#8888ff'][Math.floor(Math.random()*3)]
+    });
+  }
+
+  if (sceneId === 'bokeh') {
+    for (let i = 0; i < 70; i++) VS.bokehCircles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: 10+Math.random()*60, alpha: 0.05+Math.random()*0.15,
+      vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.3,
+      color: ['#6366f1','#ec4899','#10b981','#f59e0b','#60a5fa','#ffffff'][Math.floor(Math.random()*6)],
+      drift: Math.random()*Math.PI*2
+    });
+  }
+
+  if (sceneId === 'geometry') {
+    for (let i = 0; i < 12; i++) VS.geometryShapes.push({
+      x: W/2, y: H/2,
+      r: 30+i*20, sides: 3+i, rotation: 0,
+      rotSpeed: (0.003+Math.random()*0.005)*(Math.random()>0.5?1:-1),
+      alpha: 0.06+Math.random()*0.1,
+      color: ['#6366f1','#ec4899','#10b981','#60a5fa'][i%4]
+    });
+    for (let i = 0; i < 100; i++) VS.particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      vx:(Math.random()-0.5)*0.8, vy:(Math.random()-0.5)*0.8,
+      size: 1+Math.random()*3, alpha: 0.3+Math.random()*0.4,
+      color: ['#6366f1','#ec4899','#10b981'][Math.floor(Math.random()*3)], type:'dot'
+    });
+  }
+
+  if (sceneId === 'smoke') {
+    for (let i = 0; i < 30; i++) VS.particles.push({
+      x: W/2+(Math.random()-0.5)*100, y: H+Math.random()*100,
+      vx: (Math.random()-0.5)*1.2, vy: -(0.8+Math.random()*1.5),
+      size: 30+Math.random()*80, alpha: 0.04+Math.random()*0.08,
+      color: Math.random()>0.5?'#7c3aed':'#4c1d95', type:'smoke',
+      rotation: Math.random()*Math.PI*2, rotSpeed: (Math.random()-0.5)*0.01
+    });
+  }
+
+  if (sceneId === 'lightning') {
+    VS.lightningTimer = 0;
+    for (let i = 0; i < 150; i++) VS.particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      vx:(Math.random()-0.5)*2, vy:(Math.random()-0.5)*2,
+      size:1+Math.random()*2.5, alpha:0.4+Math.random()*0.5,
+      color:['#ffffff','#aaddff','#88bbff'][Math.floor(Math.random()*3)], type:'spark'
+    });
+  }
+
+  if (sceneId === 'confetti') {
+    for (let i = 0; i < 200; i++) VS.particles.push({
+      x: Math.random()*W, y: -Math.random()*H,
+      vx: (Math.random()-0.5)*3, vy: 1.5+Math.random()*3,
+      w: 6+Math.random()*10, h: 4+Math.random()*8,
+      rotation: Math.random()*Math.PI*2, rotSpeed: (Math.random()-0.5)*0.15,
+      color: ['#ff4081','#ffeb3b','#4caf50','#2196f3','#ff9800','#e040fb','#00bcd4'][Math.floor(Math.random()*7)],
+      type:'confetti', swing: Math.random()*Math.PI*2, swingSpeed: 0.05+Math.random()*0.05
+    });
+  }
+
+  if (sceneId === 'aurora') {
+    for (let i = 0; i < 8; i++) VS.particles.push({
+      xStart: Math.random()*W, width: W*0.4+Math.random()*W*0.6,
+      y: H*0.1+Math.random()*H*0.4, height: 60+Math.random()*150,
+      color: ['#00ff88','#00ddff','#8800ff','#ff00dd'][i%4],
+      alpha: 0.06+Math.random()*0.1, speed: 0.003+Math.random()*0.004,
+      offset: Math.random()*Math.PI*2, type:'aurora'
+    });
+  }
+
+  if (sceneId === 'lava') {
+    for (let i = 0; i < 100; i++) VS.particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      vx:(Math.random()-0.5)*1, vy: -(0.3+Math.random()*0.8),
+      size: 4+Math.random()*20, alpha:0.4+Math.random()*0.5,
+      color:Math.random()>0.5?'#ff3300':Math.random()>0.5?'#ff6600':'#ffaa00',
+      type:'lava', life:Math.random(), decay:0.003+Math.random()*0.005
+    });
+  }
+}
+
+// ── Main Scene Renderer ──
+function vsDrawScene(ctx, W, H, sceneId, time, intensity) {
+  intensity = intensity || 0.7;
+
+  // Background fills per scene
+  const bgFills = {
+    space:     () => { const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,'#000005'); g.addColorStop(0.5,'#040010'); g.addColorStop(1,'#000020'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    fire:      () => { const g=ctx.createLinearGradient(0,H,0,0); g.addColorStop(0,'#000000'); g.addColorStop(0.3,'#1a0000'); g.addColorStop(0.7,'#330000'); g.addColorStop(1,'#110000'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    matrix:    () => { ctx.fillStyle='#000800'; ctx.fillRect(0,0,W,H); },
+    ocean:     () => { const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#000a1a'); g.addColorStop(0.5,'#001a3a'); g.addColorStop(1,'#000d25'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    neon:      () => { const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#050010'); g.addColorStop(0.5,'#0a0020'); g.addColorStop(1,'#000015'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    bokeh:     () => { const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,H); g.addColorStop(0,'#0d0d1e'); g.addColorStop(1,'#050510'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    geometry:  () => { ctx.fillStyle='#050508'; ctx.fillRect(0,0,W,H); },
+    smoke:     () => { ctx.fillStyle='#0a0010'; ctx.fillRect(0,0,W,H); },
+    lightning: () => { const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#000008'); g.addColorStop(1,'#050010'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    confetti:  () => { const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,'#1a0a2e'); g.addColorStop(1,'#0a1a2e'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    aurora:    () => { const g=ctx.createLinearGradient(0,0,0,H); g.addColorStop(0,'#000a05'); g.addColorStop(0.5,'#001205'); g.addColorStop(1,'#000a10'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+    lava:      () => { const g=ctx.createLinearGradient(0,H,0,0); g.addColorStop(0,'#1a0000'); g.addColorStop(0.5,'#0d0000'); g.addColorStop(1,'#000000'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); },
+  };
+  (bgFills[sceneId] || bgFills.space)();
+
+  // Scene-specific particle drawing
+  if (sceneId === 'space') vsDrawSpace(ctx, W, H, time, intensity);
+  else if (sceneId === 'fire') vsDrawFire(ctx, W, H, time, intensity);
+  else if (sceneId === 'matrix') vsDrawMatrix(ctx, W, H, time, intensity);
+  else if (sceneId === 'ocean') vsDrawOcean(ctx, W, H, time, intensity);
+  else if (sceneId === 'neon') vsDrawNeon(ctx, W, H, time, intensity);
+  else if (sceneId === 'bokeh') vsDrawBokeh(ctx, W, H, time, intensity);
+  else if (sceneId === 'geometry') vsDrawGeometry(ctx, W, H, time, intensity);
+  else if (sceneId === 'smoke') vsDrawSmoke(ctx, W, H, time, intensity);
+  else if (sceneId === 'lightning') vsDrawLightning(ctx, W, H, time, intensity);
+  else if (sceneId === 'confetti') vsDrawConfetti(ctx, W, H, time, intensity);
+  else if (sceneId === 'aurora') vsDrawAurora(ctx, W, H, time, intensity);
+  else if (sceneId === 'lava') vsDrawLava(ctx, W, H, time, intensity);
+
+  // Vignette overlay for all scenes
+  const vig = ctx.createRadialGradient(W/2,H/2,H*0.15,W/2,H/2,H*0.85);
+  vig.addColorStop(0,'rgba(0,0,0,0)');
+  vig.addColorStop(1,'rgba(0,0,0,0.75)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0,0,W,H);
+}
+
+function vsDrawSpace(ctx, W, H, time, intensity) {
+  // Nebula clouds
+  VS.particles.forEach(p => {
+    if (p.type !== 'nebula') return;
+    p.x += p.drift * 0.5;
+    if (p.x > W+p.r) p.x = -p.r;
+    const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*intensity);
+    g.addColorStop(0, p.color.replace(')',`,${p.alpha*1.5})`).replace('rgb','rgba'));
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r*intensity,0,Math.PI*2); ctx.fill();
+  });
+  // Stars
+  VS.stars.forEach(s => {
+    s.twinkle += 0.04; s.y -= s.speed * 0.3;
+    if (s.y < -2) { s.y = H+2; s.x = Math.random()*W; }
+    const alpha = s.alpha * (0.5 + 0.5*Math.sin(s.twinkle)) * intensity;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = s.color;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    ctx.fill();
+    // Lens flare for bright stars
+    if (s.r > 1.8 && alpha > 0.7) {
+      ctx.globalAlpha = alpha * 0.3;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(s.x-8, s.y-0.5, 16, 1);
+      ctx.fillRect(s.x-0.5, s.y-8, 1, 16);
+    }
+    ctx.restore();
+  });
+  // Shooting stars occasionally
+  if (Math.random() < 0.01 * intensity) {
+    const sx = Math.random()*W, sy = Math.random()*H*0.5;
+    const g = ctx.createLinearGradient(sx,sy,sx+80,sy+30);
+    g.addColorStop(0,'rgba(255,255,255,0.9)');
+    g.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.strokeStyle = g; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(sx+80,sy+30); ctx.stroke();
+  }
+}
+
+function vsDrawFire(ctx, W, H, time, intensity) {
+  VS.fireParticles.forEach(p => {
+    p.x += p.vx + Math.sin(time*0.05+p.y*0.01)*1.5;
+    p.y += p.vy;
+    p.life -= p.decay;
+    if (p.life <= 0 || p.y < -p.size) {
+      p.x = Math.random()*W; p.y = H+10; p.life = 0.8+Math.random()*0.2;
+      p.vx = (Math.random()-0.5)*3; p.vy = -(Math.random()*5+2);
+    }
+    const alpha = p.life * intensity;
+    const size = p.size * p.life;
+    const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,size);
+    g.addColorStop(0, p.color.replace('rgb','rgba').replace(')',','+alpha+')') || `rgba(255,100,0,${alpha})`);
+    g.addColorStop(0.4, `rgba(255,50,0,${alpha*0.5})`);
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(p.x, p.y, size, 0, Math.PI*2); ctx.fill();
+  });
+  // Base glow
+  const baseG = ctx.createLinearGradient(0,H,0,H*0.4);
+  baseG.addColorStop(0,`rgba(255,60,0,${0.3*intensity})`);
+  baseG.addColorStop(0.5,`rgba(255,120,0,${0.15*intensity})`);
+  baseG.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=baseG; ctx.fillRect(0,H*0.4,W,H*0.6);
+}
+
+function vsDrawMatrix(ctx, W, H, time, intensity) {
+  // Fade trails
+  ctx.fillStyle = `rgba(0,8,0,${0.12+0.08*intensity})`;
+  ctx.fillRect(0, 0, W, H);
+  ctx.font = '16px monospace';
+  VS.matrixChars.forEach(col => {
+    col.y += col.speed;
+    if (col.y > H + col.spacing * col.chars.length) col.y = -col.spacing*5;
+    col.updateTimer++;
+    if (col.updateTimer >= col.updateRate) {
+      col.updateTimer = 0;
+      col.chars[Math.floor(Math.random()*col.chars.length)] = '0123456789ABCDEF$@#!'.charAt(Math.floor(Math.random()*20));
+    }
+    col.chars.forEach((ch, i) => {
+      const y = col.y + i * col.spacing;
+      if (y < -col.spacing || y > H + col.spacing) return;
+      const isHead = (i === col.chars.length-1);
+      ctx.fillStyle = isHead ? `rgba(200,255,200,${col.alpha})` : i>col.chars.length-4 ? `rgba(0,255,70,${col.alpha*0.8*intensity})` : `rgba(0,160,40,${col.alpha*0.4*intensity})`;
+      ctx.fillText(ch, col.x, y);
+    });
+  });
+}
+
+function vsDrawOcean(ctx, W, H, time, intensity) {
+  // Deep ocean particles
+  VS.particles.forEach(p => {
+    if (p.type !== 'bubble') return;
+    p.y -= p.speed;
+    p.x += Math.sin(time*0.03+p.y*0.01)*0.5;
+    if (p.y < -p.size) { p.y = H+p.size; p.x = Math.random()*W; }
+    ctx.save();
+    ctx.globalAlpha = p.alpha * intensity * (0.5 + 0.5*Math.sin(time*0.05+p.x));
+    ctx.strokeStyle = '#55aaff';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.stroke();
+    ctx.restore();
+  });
+  // Animated waves
+  VS.wavePoints.forEach((wave, wi) => {
+    wave.offset += wave.speed;
+    ctx.save();
+    ctx.globalAlpha = intensity * 0.6;
+    ctx.fillStyle = wave.color;
+    ctx.beginPath(); ctx.moveTo(0, wave.y);
+    for (let x = 0; x <= W; x += 4) {
+      const y = wave.y + Math.sin(x*0.015+wave.offset)*wave.amplitude + Math.cos(x*0.008+wave.offset*1.3)*wave.amplitude*0.5;
+      ctx.lineTo(x, y);
+    }
+    ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  });
+  // Caustics light patterns
+  for (let i = 0; i < 5; i++) {
+    const cx = (W*0.2*i + time*30) % (W*1.5) - W*0.2;
+    const g = ctx.createRadialGradient(cx,H*0.2,0,cx,H*0.3,80);
+    g.addColorStop(0,`rgba(100,200,255,${0.04*intensity})`);
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H*0.5);
+  }
+}
+
+function vsDrawNeon(ctx, W, H, time, intensity) {
+  // City silhouette
+  ctx.fillStyle = '#0a0015';
+  const buildings = [
+    [0,0.5,0.06],[0.05,0.4,0.07],[0.1,0.55,0.06],[0.15,0.35,0.08],[0.22,0.6,0.05],
+    [0.28,0.3,0.09],[0.35,0.5,0.07],[0.42,0.25,0.1],[0.5,0.45,0.08],[0.58,0.35,0.09],
+    [0.65,0.55,0.06],[0.72,0.4,0.07],[0.78,0.28,0.1],[0.85,0.5,0.06],[0.92,0.38,0.08]
+  ];
+  buildings.forEach(([x,h,w]) => {
+    ctx.fillStyle = '#050010';
+    ctx.fillRect(x*W, H*(1-h), w*W, H*h);
+    // Window lights
+    for (let wy = H*(1-h)+5; wy < H-5; wy+=14) {
+      for (let wx = x*W+3; wx < (x+w)*W-5; wx+=12) {
+        if (Math.random() > 0.3) {
+          ctx.fillStyle = `rgba(255,220,100,${0.3+Math.random()*0.4})`;
+          ctx.fillRect(wx, wy, 5, 7);
+        }
+      }
+    }
+  });
+
+  // Neon signs
+  const signs = [
+    {x:0.15*W, y:H*0.42, color:'#ff0088', text:'OPEN'},
+    {x:0.55*W, y:H*0.38, color:'#00ffff', text:'24/7'},
+    {x:0.75*W, y:H*0.45, color:'#ff8800', text:'BAR'},
+  ];
+  ctx.font = 'bold 14px sans-serif';
+  signs.forEach(sign => {
+    ctx.save();
+    ctx.shadowColor = sign.color; ctx.shadowBlur = 15;
+    ctx.fillStyle = sign.color;
+    ctx.fillText(sign.text, sign.x, sign.y);
+    ctx.restore();
+  });
+
+  // Rain
+  VS.particles.forEach(p => {
+    if (p.type !== 'rain') return;
+    p.y += p.vy;
+    if (p.y > H) { p.y = -p.length; p.x = Math.random()*W; }
+    ctx.save();
+    ctx.globalAlpha = p.alpha * intensity;
+    ctx.strokeStyle = p.color;
+    ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-p.length*0.2,p.y+p.length); ctx.stroke();
+    ctx.restore();
+  });
+
+  // Street glow at bottom
+  const sg = ctx.createLinearGradient(0,H*0.75,0,H);
+  sg.addColorStop(0,'rgba(0,0,0,0)');
+  sg.addColorStop(1,`rgba(50,0,100,${0.3*intensity})`);
+  ctx.fillStyle=sg; ctx.fillRect(0,H*0.75,W,H*0.25);
+
+  // Neon city lights
+  VS.cityLights.forEach(l => {
+    l.blink && (l.alpha = 0.3 + 0.7*Math.abs(Math.sin(time*l.blinkRate*10)));
+    const g = ctx.createRadialGradient(l.x+l.w/2,l.y+l.h/2,0,l.x+l.w/2,l.y+l.h/2,Math.max(l.w,l.h)*3);
+    g.addColorStop(0, l.color.replace('rgb','rgba').replace(')',','+l.alpha*intensity+')') || l.color);
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g; ctx.fillRect(l.x-l.w*2,l.y-l.h*2,l.w*5,l.h*5);
+  });
+}
+
+function vsDrawBokeh(ctx, W, H, time, intensity) {
+  VS.bokehCircles.forEach(b => {
+    b.x += b.vx + Math.sin(b.drift + time*0.01)*0.3;
+    b.y += b.vy + Math.cos(b.drift + time*0.008)*0.3;
+    b.drift += 0.005;
+    if (b.x < -b.r) b.x = W+b.r;
+    if (b.x > W+b.r) b.x = -b.r;
+    if (b.y < -b.r) b.y = H+b.r;
+    if (b.y > H+b.r) b.y = -b.r;
+    const g = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+    g.addColorStop(0, `rgba(255,255,255,${b.alpha*intensity*0.3})`);
+    g.addColorStop(0.5, `${b.color}${Math.floor(b.alpha*intensity*200).toString(16).padStart(2,'0')}`);
+    g.addColorStop(0.7, `${b.color}${Math.floor(b.alpha*intensity*80).toString(16).padStart(2,'0')}`);
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2); ctx.fill();
+    // Bokeh ring
+    ctx.save();
+    ctx.globalAlpha = b.alpha * intensity * 0.4;
+    ctx.strokeStyle = b.color;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(b.x,b.y,b.r*0.85,0,Math.PI*2); ctx.stroke();
+    ctx.restore();
+  });
+}
+
+function vsDrawGeometry(ctx, W, H, time, intensity) {
+  VS.particles.forEach(p => {
+    if (p.type !== 'dot') return;
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > W) p.vx *= -1;
+    if (p.y < 0 || p.y > H) p.vy *= -1;
+    ctx.save(); ctx.globalAlpha = p.alpha*intensity;
+    ctx.fillStyle = p.color;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  });
+  VS.geometryShapes.forEach(s => {
+    s.rotation += s.rotSpeed;
+    ctx.save();
+    ctx.translate(s.x,s.y); ctx.rotate(s.rotation);
+    ctx.globalAlpha = s.alpha * intensity;
+    ctx.strokeStyle = s.color; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i <= s.sides; i++) {
+      const a = (i/s.sides)*Math.PI*2 - Math.PI/2;
+      i === 0 ? ctx.moveTo(Math.cos(a)*s.r, Math.sin(a)*s.r) : ctx.lineTo(Math.cos(a)*s.r, Math.sin(a)*s.r);
+    }
+    ctx.closePath(); ctx.stroke();
+    ctx.restore();
+  });
+  // Central sacred geometry glow
+  const sg = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,150);
+  sg.addColorStop(0,`rgba(99,102,241,${0.1*intensity})`);
+  sg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=sg; ctx.fillRect(0,0,W,H);
+}
+
+function vsDrawSmoke(ctx, W, H, time, intensity) {
+  VS.particles.forEach(p => {
+    if (p.type !== 'smoke') return;
+    p.x += p.vx + Math.sin(time*0.02+p.y*0.005)*0.8;
+    p.y += p.vy;
+    p.rotation += p.rotSpeed;
+    p.size += 0.3;
+    p.alpha -= 0.0005;
+    if (p.y < -p.size || p.alpha <= 0) {
+      Object.assign(p, { x:W/2+(Math.random()-0.5)*100, y:H+50, size:20+Math.random()*50, alpha:0.05+Math.random()*0.07, rotation:Math.random()*Math.PI*2 });
+    }
+    ctx.save();
+    ctx.globalAlpha = p.alpha * intensity;
+    ctx.translate(p.x,p.y); ctx.rotate(p.rotation);
+    const g = ctx.createRadialGradient(0,0,0,0,0,p.size);
+    g.addColorStop(0, `${p.color}44`);
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g;
+    ctx.beginPath(); ctx.arc(0,0,p.size,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  });
+}
+
+function vsDrawLightning(ctx, W, H, time, intensity) {
+  // Background charge effect
+  if (Math.random() < 0.02*intensity) {
+    ctx.fillStyle=`rgba(100,150,255,${Math.random()*0.08*intensity})`;
+    ctx.fillRect(0,0,W,H);
+  }
+  // Spark particles
+  VS.particles.forEach(p => {
+    if (p.type !== 'spark') return;
+    p.x += p.vx; p.y += p.vy;
+    if (p.x<0||p.x>W) p.vx*=-1;
+    if (p.y<0||p.y>H) p.vy*=-1;
+    ctx.save(); ctx.globalAlpha=p.alpha*intensity*Math.random();
+    ctx.fillStyle=p.color;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  });
+  // Lightning bolt
+  if (Math.random() < 0.04*intensity) {
+    vsDrawLightningBolt(ctx, Math.random()*W, 0, Math.random()*W, H, 8, intensity);
+  }
+}
+
+function vsDrawLightningBolt(ctx, x1, y1, x2, y2, branches, intensity) {
+  if (branches <= 0 || Math.abs(y2-y1) < 20) return;
+  const mx = (x1+x2)/2 + (Math.random()-0.5)*80;
+  const my = (y1+y2)/2;
+  ctx.save();
+  ctx.strokeStyle=`rgba(150,200,255,${0.7*intensity})`;
+  ctx.lineWidth=branches*0.4;
+  ctx.shadowColor='#88aaff'; ctx.shadowBlur=12;
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.quadraticCurveTo(mx,my,x2,y2); ctx.stroke();
+  ctx.restore();
+  if (Math.random() < 0.5) vsDrawLightningBolt(ctx, mx, my, mx+(Math.random()-0.5)*100, y2, branches-2, intensity*0.6);
+}
+
+function vsDrawConfetti(ctx, W, H, time, intensity) {
+  VS.particles.forEach(p => {
+    if (p.type !== 'confetti') return;
+    p.y += p.vy;
+    p.x += p.vx + Math.sin(p.swing)*2;
+    p.rotation += p.rotSpeed;
+    p.swing += p.swingSpeed;
+    if (p.y > H+10) { p.y = -10; p.x = Math.random()*W; }
+    ctx.save();
+    ctx.translate(p.x,p.y); ctx.rotate(p.rotation);
+    ctx.globalAlpha = intensity;
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+    ctx.restore();
+  });
+  // Sparkle bursts
+  if (Math.random() < 0.05*intensity) {
+    const sx=Math.random()*W, sy=Math.random()*H;
+    for (let i=0;i<6;i++) {
+      const a=(i/6)*Math.PI*2, r=10+Math.random()*20;
+      ctx.save(); ctx.globalAlpha=0.5*intensity;
+      ctx.strokeStyle='#ffffff'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(sx+Math.cos(a)*r,sy+Math.sin(a)*r); ctx.stroke();
+      ctx.restore();
+    }
+  }
+}
+
+function vsDrawAurora(ctx, W, H, time, intensity) {
+  VS.particles.forEach(p => {
+    if (p.type !== 'aurora') return;
+    p.offset += p.speed;
+    for (let i = 0; i < 40; i++) {
+      const x = p.xStart + (i/40)*p.width;
+      const y = p.y + Math.sin(x*0.01+p.offset)*60 + Math.cos(x*0.008+p.offset*0.7)*40;
+      const g = ctx.createLinearGradient(x,y,x,y+p.height);
+      g.addColorStop(0,'rgba(0,0,0,0)');
+      g.addColorStop(0.3,`${p.color}${Math.floor(p.alpha*intensity*255).toString(16).padStart(2,'0')}`);
+      g.addColorStop(0.7,`${p.color}${Math.floor(p.alpha*intensity*150).toString(16).padStart(2,'0')}`);
+      g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=g;
+      const width = p.width/40;
+      ctx.fillRect(x,y,width+1,p.height);
+    }
+  });
+  // Star layer
+  if (VS.stars.length === 0) {
+    for (let i=0;i<100;i++) VS.stars.push({ x:Math.random()*W, y:Math.random()*H*0.5, r:Math.random()*1.5, alpha:Math.random()*0.6+0.2, twinkle:Math.random()*Math.PI*2, speed:0.1, color:'#ffffff' });
+  }
+  VS.stars.forEach(s => {
+    s.twinkle+=0.03;
+    ctx.save(); ctx.globalAlpha=s.alpha*(0.5+0.5*Math.sin(s.twinkle))*intensity*0.7;
+    ctx.fillStyle='#ffffff';
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  });
+}
+
+function vsDrawLava(ctx, W, H, time, intensity) {
+  VS.particles.forEach(p => {
+    if (p.type !== 'lava') return;
+    p.x += p.vx + Math.sin(time*0.03+p.y*0.02)*1.2;
+    p.y += p.vy;
+    p.life -= p.decay;
+    if (p.life<=0||p.y<-p.size) {
+      Object.assign(p, { x:Math.random()*W, y:H+20, life:0.6+Math.random()*0.4, vx:(Math.random()-0.5)*1.5, vy:-(0.5+Math.random()*1.5) });
+    }
+    const alpha = p.life*intensity;
+    const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.size*p.life);
+    g.addColorStop(0,`${p.color}FF`);
+    g.addColorStop(0.5,p.color+'88');
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.size*p.life,0,Math.PI*2); ctx.fill();
+  });
+  // Lava cracks
+  ctx.save(); ctx.globalAlpha=0.15*intensity; ctx.strokeStyle='#ff4400'; ctx.lineWidth=1;
+  for (let i=0;i<8;i++) {
+    const cx=Math.random()*W, cy=H*0.6+Math.random()*H*0.4;
+    ctx.beginPath(); ctx.moveTo(cx,cy);
+    let x=cx,y=cy;
+    for (let j=0;j<5;j++) { x+=(Math.random()-0.5)*40; y-=10+Math.random()*20; ctx.lineTo(x,y); }
+    ctx.stroke();
+  }
+  ctx.restore();
+  const lavaG=ctx.createLinearGradient(0,H*0.7,0,H);
+  lavaG.addColorStop(0,'rgba(0,0,0,0)');
+  lavaG.addColorStop(1,`rgba(200,40,0,${0.25*intensity})`);
+  ctx.fillStyle=lavaG; ctx.fillRect(0,H*0.7,W,H*0.3);
+}
+
+// ── Caption Rendering Engine ──
+function vsDrawCaption(ctx, W, H, text, style, color, fontSize, progress, time) {
+  if (!text) return;
+  ctx.save();
+  const x = W/2, y = H/2;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  if (style === 'word-pop') {
+    // Bold word-by-word pop like TikTok
+    const words = text.split(' ');
+    ctx.font = `900 ${fontSize}px 'Syne', sans-serif`;
+    const lineH = fontSize * 1.35;
+    const lines = vsLayoutWords(ctx, words, W - 80);
+    const totalH = lines.length * lineH;
+    const startY = y - totalH/2;
+    lines.forEach((line, li) => {
+      const ly = startY + li*lineH + lineH/2;
+      // Background pill
+      const tw = ctx.measureText(line).width;
+      ctx.save();
+      const scale = 1 + 0.04*Math.sin(time*0.15+li*1.2);
+      ctx.translate(x, ly); ctx.scale(scale, scale);
+      ctx.fillStyle = 'rgba(0,0,0,0.55)';
+      const pad = fontSize*0.22;
+      vsRoundRect(ctx, -tw/2-pad, -lineH/2-pad*0.5, tw+pad*2, lineH+pad, fontSize*0.15);
+      ctx.fill();
+      // Outline
+      ctx.strokeStyle = 'rgba(0,0,0,0.9)'; ctx.lineWidth = fontSize*0.12; ctx.lineJoin='round';
+      ctx.font = `900 ${fontSize}px 'Syne', sans-serif`;
+      ctx.strokeText(line, 0, 0);
+      ctx.fillStyle = color; ctx.fillText(line, 0, 0);
+      ctx.restore();
+    });
+
+  } else if (style === 'karaoke') {
+    // Karaoke highlight: colored progress through text
+    ctx.font = `800 ${fontSize}px 'Syne', sans-serif`;
+    const lines = vsLayoutWords(ctx, text.split(' '), W-80);
+    const totalH = lines.length * fontSize * 1.35;
+    const startY = y - totalH/2;
+    lines.forEach((line, li) => {
+      const ly = startY + li*fontSize*1.35 + fontSize*0.675;
+      const tw = ctx.measureText(line).width;
+      // Base text (muted)
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.strokeStyle='rgba(0,0,0,0.8)'; ctx.lineWidth=fontSize*0.1;
+      ctx.strokeText(line, x, ly); ctx.fillText(line, x, ly);
+      // Highlighted portion
+      const highlighted = Math.min(tw, tw * ((progress*lines.length) - li));
+      if (highlighted > 0) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(x - tw/2, ly - fontSize, highlighted, fontSize*1.3);
+        ctx.clip();
+        ctx.fillStyle = color;
+        ctx.fillText(line, x, ly);
+        ctx.restore();
+      }
+    });
+
+  } else if (style === 'subtitle') {
+    // Netflix-style subtitle bar
+    const barH = fontSize * 2.2;
+    ctx.fillStyle = 'rgba(0,0,0,0.75)';
+    ctx.fillRect(0, H - barH - 100, W, barH + 20);
+    ctx.font = `700 ${fontSize*0.85}px 'DM Sans', sans-serif`;
+    ctx.fillStyle = color;
+    ctx.strokeStyle = 'rgba(0,0,0,0.6)'; ctx.lineWidth = fontSize*0.07;
+    const subtitleY = H - 100 - barH/2;
+    ctx.strokeText(text.substring(0,80), x, subtitleY);
+    ctx.fillText(text.substring(0,80), x, subtitleY);
+
+  } else if (style === 'slam') {
+    // Impact-style slam-in effect
+    const scale = 1 + Math.max(0, 0.3 - time*0.05*0.3);
+    ctx.translate(x, y); ctx.scale(scale, scale);
+    ctx.font = `900 ${fontSize*1.1}px 'Syne', sans-serif`;
+    const lines = vsLayoutWords(ctx, text.split(' '), W-60);
+    lines.forEach((line, i) => {
+      const ly = (i - lines.length/2 + 0.5) * fontSize*1.3;
+      ctx.strokeStyle='#000000'; ctx.lineWidth=fontSize*0.15; ctx.lineJoin='round';
+      ctx.strokeText(line, 0, ly);
+      ctx.fillStyle = color; ctx.fillText(line, 0, ly);
+    });
+
+  } else if (style === 'glitch') {
+    // Glitch effect
+    ctx.font = `900 ${fontSize}px 'Syne', sans-serif`;
+    const lines = vsLayoutWords(ctx, text.split(' '), W-80);
+    lines.forEach((line, li) => {
+      const ly = y + (li - lines.length/2 + 0.5)*fontSize*1.3;
+      if (Math.random() < 0.15) {
+        // RGB split
+        ctx.save();
+        ctx.globalAlpha = 0.7;
+        ctx.fillStyle = '#ff0040';
+        ctx.fillText(line, x-4+Math.random()*6, ly+Math.random()*4-2);
+        ctx.fillStyle = '#00ffff';
+        ctx.fillText(line, x+4-Math.random()*6, ly-Math.random()*4+2);
+        ctx.restore();
+      }
+      ctx.strokeStyle='#000'; ctx.lineWidth=fontSize*0.1;
+      ctx.strokeText(line, x, ly);
+      ctx.fillStyle = color; ctx.fillText(line, x, ly);
+    });
+
+  } else if (style === 'typewriter') {
+    ctx.font = `700 ${fontSize*0.9}px 'DM Mono', monospace`;
+    const displayText = text.substring(0, Math.floor(progress * text.length * 1.2));
+    const lines = vsLayoutWords(ctx, displayText.split(' '), W-80);
+    lines.forEach((line, li) => {
+      const ly = y + (li - lines.length/2 + 0.5)*fontSize*1.25;
+      ctx.strokeStyle='rgba(0,0,0,0.8)'; ctx.lineWidth=fontSize*0.08;
+      ctx.strokeText(line + (li===lines.length-1?'|':''), x, ly);
+      ctx.fillStyle=color; ctx.fillText(line + (li===lines.length-1?'|':''), x, ly);
+    });
+  }
+  ctx.restore();
+}
+
+function vsLayoutWords(ctx, words, maxW) {
+  const lines = [];
+  let line = '';
+  words.forEach(word => {
+    const test = line + (line?' ':'') + word;
+    if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = word; }
+    else line = test;
+  });
+  if (line) lines.push(line);
+  return lines;
+}
+
+function vsRoundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.arcTo(x+w,y,x+w,y+r,r);
+  ctx.lineTo(x+w,y+h-r); ctx.arcTo(x+w,y+h,x+w-r,y+h,r);
+  ctx.lineTo(x+r,y+h); ctx.arcTo(x,y+h,x,y+h-r,r);
+  ctx.lineTo(x,y+r); ctx.arcTo(x,y,x+r,y,r);
+  ctx.closePath();
+}
+
+// ── Overlay Graphics (progress, emoji, CTA) ──
+function vsDrawOverlays(ctx, W, H, progress, time, watermark) {
+  const showProgress = document.getElementById('vsShowProgress')?.checked;
+  const showLogo = document.getElementById('vsShowLogo')?.checked;
+  const showEmoji = document.getElementById('vsShowEmoji')?.checked;
+  const showCTA = document.getElementById('vsShowCTA')?.checked;
+  const platform = document.getElementById('vsPlatform')?.value || 'tiktok';
+
+  // Progress bar (top)
+  if (showProgress) {
+    const pbW = W * progress;
+    ctx.save();
+    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    ctx.fillRect(0, 0, W, 4);
+    const pg = ctx.createLinearGradient(0,0,pbW,0);
+    pg.addColorStop(0,'#6366f1'); pg.addColorStop(0.5,'#ec4899'); pg.addColorStop(1,'#10b981');
+    ctx.fillStyle=pg; ctx.fillRect(0,0,pbW,4);
+    ctx.restore();
+  }
+
+  // Platform badge (top right)
+  const platMap = { tiktok:'TikTok', instagram:'Instagram', youtube:'YouTube', twitter:'X', linkedin:'LinkedIn', facebook:'Facebook' };
+  ctx.save();
+  ctx.font = 'bold 13px DM Sans, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.28)';
+  ctx.textAlign = 'right'; ctx.textBaseline = 'top';
+  ctx.fillText(platMap[platform]||platform, W-14, 14);
+  ctx.restore();
+
+  // Animated emoji (context-aware, appears mid-screen)
+  if (showEmoji && Math.floor(time/40) % 2 === 0) {
+    const scene = document.getElementById('vsScene')?.value || 'space';
+    const emojiMap = { space:'🌌',fire:'🔥',matrix:'💻',ocean:'🌊',neon:'🏙️',bokeh:'✨',geometry:'🔷',smoke:'💨',lightning:'⚡',confetti:'🎊',aurora:'🌈',lava:'🌋' };
+    const emoji = emojiMap[scene]||'✨';
+    const emojiY = H*0.12 + Math.sin(time*0.08)*8;
+    const emojiScale = 1 + 0.05*Math.sin(time*0.12);
+    ctx.save();
+    ctx.font = '32px serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.translate(24, emojiY);
+    ctx.scale(emojiScale, emojiScale);
+    ctx.globalAlpha = 0.75;
+    ctx.fillText(emoji, 0, 0);
+    ctx.restore();
+  }
+
+  // Brand logo frame (top-left corner bracket)
+  if (showLogo) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(99,102,241,0.5)'; ctx.lineWidth = 2;
+    const bl = 20;
+    ctx.beginPath(); ctx.moveTo(14,14+bl); ctx.lineTo(14,14); ctx.lineTo(14+bl,14); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W-14-bl,14); ctx.lineTo(W-14,14); ctx.lineTo(W-14,14+bl); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(14,H-14-bl); ctx.lineTo(14,H-14); ctx.lineTo(14+bl,H-14); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W-14-bl,H-14); ctx.lineTo(W-14,H-14); ctx.lineTo(W-14,H-14-bl); ctx.stroke();
+    ctx.restore();
+  }
+
+  // Follow CTA badge
+  if (showCTA) {
+    const ctaY = H - 160;
+    ctx.save();
+    ctx.globalAlpha = 0.6 + 0.2*Math.sin(time*0.1);
+    const ctaW = 170, ctaH = 36;
+    const ctaX = W/2 - ctaW/2;
+    ctx.fillStyle = 'rgba(99,102,241,0.75)';
+    vsRoundRect(ctx, ctaX, ctaY, ctaW, ctaH, 18);
+    ctx.fill();
+    ctx.font = 'bold 14px DM Sans, sans-serif';
+    ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('👆 Follow for more', W/2, ctaY + ctaH/2);
+    ctx.restore();
+  }
+
+  // Watermark
+  if (watermark) {
+    ctx.save();
+    ctx.font = 'bold 17px DM Sans, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.45)';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.shadowColor='rgba(0,0,0,0.5)'; ctx.shadowBlur=6;
+    ctx.fillText(watermark, W/2, H-18);
+    ctx.restore();
+  }
+
+  // Tint overlay
+  const tintVal = document.getElementById('vsTint')?.value || 'none';
+  if (VS.TINTS[tintVal]) {
+    ctx.fillStyle = VS.TINTS[tintVal];
+    ctx.fillRect(0,0,W,H);
+  }
+}
+
+// ── Main Preview Renderer ──
+function vsRenderPreview() {
+  const canvas = document.getElementById('vsCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const sceneId = document.getElementById('vsScene')?.value || 'space';
+  const intensity = parseFloat(document.getElementById('vsIntensity')?.value || 0.7);
+  const time = VS.sceneTime || 0;
+
+  vsDrawScene(ctx, W, H, sceneId, time, intensity);
+
+  // Caption
+  const script = document.getElementById('vsScript')?.value.trim() || 'Your script appears here...';
+  const captStyle = document.getElementById('vsCaptionStyle')?.value || 'word-pop';
+  const textColor = document.getElementById('vsTextColor')?.value || '#ffffff';
+  const fontSize = parseInt(document.getElementById('vsFontSize')?.value || 44);
+  const progress = (Math.sin(time*0.02)+1)/2;
+
+  // Show preview of first part of script
+  const previewText = VS.slides.length > 0 ? VS.slides[VS.currentSlide||0] : script.split(/[.!?]/)[0].trim();
+  vsDrawCaption(ctx, W, H, previewText||script.substring(0,60), captStyle, textColor, fontSize, progress, time);
+
+  // Overlays
+  vsDrawOverlays(ctx, W, H, progress, time, document.getElementById('vsWatermark')?.value||'');
+}
+
+// ── Live Preview Animation ──
+function vsLivePreviewToggle() {
+  const btn = document.getElementById('vsLiveBtn');
+  if (VS.livePreviewActive) {
+    VS.livePreviewActive = false;
+    cancelAnimationFrame(VS.animFrame);
+    btn.textContent = '▶️ Animate';
+    return;
+  }
+  VS.livePreviewActive = true;
+  btn.textContent = '⏸ Pause';
+  const sceneId = document.getElementById('vsScene')?.value || 'space';
+  if (VS.particles.length === 0 && VS.stars.length === 0 && VS.fireParticles.length === 0 && VS.matrixChars.length === 0 && VS.bokehCircles.length === 0) {
+    vsInitSceneParticles(sceneId);
+  }
+  let lastTime = 0;
+  function animate(ts) {
+    if (!VS.livePreviewActive) return;
+    const dt = ts - lastTime;
+    if (dt > 28) { // ~35fps cap for preview
+      lastTime = ts;
+      VS.sceneTime++;
+      vsRenderPreview();
+      // FPS counter
+      VS.frameCount++;
+      if (ts - VS.lastFpsTime > 1000) {
+        const fps = Math.round(VS.frameCount * 1000 / (ts - VS.lastFpsTime));
+        const fpsEl = document.getElementById('vsFpsCounter');
+        if (fpsEl) fpsEl.textContent = fps + 'fps';
+        VS.frameCount = 0; VS.lastFpsTime = ts;
+      }
+    }
+    VS.animFrame = requestAnimationFrame(animate);
+  }
+  VS.animFrame = requestAnimationFrame(animate);
+}
+
+// ── Voice System ──
 function vsLoadVoices() {
   return new Promise(resolve => {
     const load = () => {
       const voices = speechSynthesis.getVoices();
-      const english = voices.filter(v =>
-        v.lang.startsWith('en') &&
-        !v.name.toLowerCase().includes('espeak') &&
-        !v.name.toLowerCase().includes('compact')
-      );
-      VS.allVoices = english.length > 0 ? english : voices.slice(0, 20);
-      vsRenderVoiceGrid(VS.allVoices);
-      resolve(VS.allVoices);
+      VS.allVoices = voices;
+      vsRenderVoiceGrid(voices);
+      resolve(voices);
     };
-    if (speechSynthesis.getVoices().length > 0) { load(); return; }
-    speechSynthesis.onvoiceschanged = load;
-    setTimeout(load, 1500);
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = load;
+    }
+    setTimeout(load, 100);
   });
 }
 
 function vsGetVoiceCategory(voice) {
-  const name = voice.name.toLowerCase();
-  const lang = voice.lang.toLowerCase();
-  const cats = [];
-  if (name.includes('female') || name.includes('samantha') || name.includes('victoria') || name.includes('karen') || name.includes('moira') || name.includes('fiona') || name.includes('tessa') || name.includes('veena') || name.includes('allison') || name.includes('ava') || name.includes('kate') || name.includes('zira') || name.includes('hazel') || name.includes('susan')) cats.push('female');
-  else cats.push('male');
-  if (lang.includes('en-gb') || name.includes('british') || name.includes('daniel') && lang.includes('gb') || name.includes('kate') || name.includes('hazel') || name.includes('oliver')) cats.push('uk');
-  if (lang.includes('en-au') || name.includes('karen') || name.includes('lee') || name.includes('tessa')) cats.push('au');
-  if (lang.includes('en-us') || lang.includes('en_us')) cats.push('us');
-  return cats;
+  const n = (voice.name + voice.lang).toLowerCase();
+  if (/en-gb|en-uk|british|daniel|kate|oliver|serena|amy/.test(n)) return 'uk';
+  if (/en-au|australia|karen/.test(n)) return 'au';
+  if (/female|woman|zira|hazel|susan|karen|victoria|tessa|moira|fiona|samantha|ava/.test(n)) return 'female';
+  if (/male|man|david|mark|alex|daniel|fred|jorge|luca|eddy|thomas|rishi/.test(n)) return 'male';
+  if (/en-us|us/.test(n)) return 'us';
+  return 'other';
 }
 
 function vsRenderVoiceGrid(voices) {
   const grid = document.getElementById('vsVoiceGrid');
   if (!grid) return;
-  if (voices.length === 0) {
-    grid.innerHTML = '<div style="color:var(--muted);font-size:.82rem;padding:.5rem;grid-column:1/-1">Loading voices... Click preview to trigger voice loading.</div>';
+  const engVoices = voices.filter(v => v.lang.startsWith('en')).slice(0, 20);
+  if (engVoices.length === 0) {
+    grid.innerHTML = '<div style="color:var(--warn);font-size:.82rem;padding:.5rem;grid-column:1/-1">⚠️ No voices loaded. Click Preview Voice or try Chrome/Edge.</div>';
     return;
   }
-  grid.innerHTML = voices.slice(0, 24).map((v, i) => {
-    const cats = vsGetVoiceCategory(v);
-    const isFemale = cats.includes('female');
-    const region = cats.includes('uk') ? '🇬🇧' : cats.includes('au') ? '🇦🇺' : '🇺🇸';
-    const gender = isFemale ? '👩' : '👨';
-    const shortName = v.name.replace('Microsoft ','').replace('Google ','').replace(' Online (Natural)','').replace(' Desktop','').split(' - ')[0];
-    const allVoicesIdx = VS.allVoices.indexOf(v);
-    return `<div class="voice-card" data-index="${allVoicesIdx}" data-cats="${cats.join(',')}" onclick="vsSelectVoice(${i},this)" style="padding:.625rem .75rem;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;background:var(--bg3);display:flex;align-items:center;gap:.5rem">
-      <span style="font-size:1.1rem">${gender}</span>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:.78rem;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${shortName}</div>
-        <div style="font-size:.65rem;color:var(--muted)">${region} ${v.lang}</div>
+  grid.innerHTML = engVoices.map((v, i) => {
+    const cat = vsGetVoiceCategory(v);
+    const catIcon = { uk:'🇬🇧', au:'🇦🇺', female:'👩', male:'👨', us:'🇺🇸', other:'🎙️' }[cat] || '🎙️';
+    return `<div onclick="vsSelectVoice(${i},this)" style="padding:.5rem;border:1px solid ${i===0?'var(--accent)':'var(--border)'};border-radius:8px;cursor:pointer;transition:all .15s;background:${i===0?'rgba(99,102,241,.1)':'var(--bg3)'}">
+      <div style="display:flex;align-items:center;gap:.375rem;margin-bottom:.2rem">
+        <span style="font-size:.9rem">${catIcon}</span>
+        <span style="font-size:.72rem;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${v.name.split(' ').slice(0,2).join(' ')}</span>
       </div>
-      <button onclick="event.stopPropagation();vsQuickPreview(${allVoicesIdx})" style="background:rgba(99,102,241,.2);border:none;border-radius:6px;padding:.25rem .4rem;cursor:pointer;color:var(--accent);font-size:.7rem">▶</button>
+      <div style="display:flex;gap:.25rem;align-items:center">
+        <span style="font-size:.62rem;color:var(--muted)">${v.lang}</span>
+        <button onclick="event.stopPropagation();vsQuickPreview(${i})" style="margin-left:auto;background:none;border:none;color:var(--accent);cursor:pointer;font-size:.7rem;padding:.1rem .3rem">▶</button>
+      </div>
     </div>`;
   }).join('');
-  // Auto-select first
-  if (voices.length > 0) vsSelectVoice(0, grid.querySelector('.voice-card'));
+  if (!VS.selectedVoice && engVoices.length > 0) {
+    VS.selectedVoice = engVoices[0];
+    document.getElementById('vsVoiceLabel').textContent = engVoices[0].name.split(' ').slice(0,2).join(' ');
+  }
 }
 
 function vsFilterVoices(cat, btn) {
   btn.closest('.tabs').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
-  const filtered = cat === 'all' ? VS.allVoices : VS.allVoices.filter(v => vsGetVoiceCategory(v).includes(cat));
+  const filtered = cat === 'all' ? VS.allVoices.filter(v=>v.lang.startsWith('en')).slice(0,20) : VS.allVoices.filter(v=>v.lang.startsWith('en')&&vsGetVoiceCategory(v)===cat).slice(0,20);
   vsRenderVoiceGrid(filtered);
 }
 
 function vsSelectVoice(index, el) {
-  document.querySelectorAll('.voice-card').forEach(c => {
-    c.style.borderColor = 'var(--border)';
-    c.style.background = 'var(--bg3)';
-  });
-  if (el) {
-    el.style.borderColor = 'var(--accent)';
-    el.style.background = 'rgba(99,102,241,.12)';
-    // Use the true allVoices index stored in data-index
-    const trueIdx = parseInt(el.dataset.index);
-    VS.selectedVoice = VS.allVoices[trueIdx] || VS.allVoices[index];
-  } else {
-    VS.selectedVoice = VS.allVoices[index];
-  }
-  const nameEl = document.getElementById('vsVoiceLabel');
-  if (nameEl && VS.selectedVoice) {
-    const shortName = VS.selectedVoice.name.replace('Microsoft ','').replace('Google ','').split(' - ')[0].substring(0,20);
-    nameEl.textContent = shortName;
-  }
+  const all = document.querySelectorAll('#vsVoiceGrid > div');
+  all.forEach(d => { d.style.borderColor='var(--border)'; d.style.background='var(--bg3)'; });
+  if (el) { el.style.borderColor='var(--accent)'; el.style.background='rgba(99,102,241,.1)'; }
+  const engVoices = VS.allVoices.filter(v=>v.lang.startsWith('en')).slice(0,20);
+  VS.selectedVoice = engVoices[index];
+  if (VS.selectedVoice) document.getElementById('vsVoiceLabel').textContent = VS.selectedVoice.name.split(' ').slice(0,2).join(' ');
 }
 
 function vsQuickPreview(index) {
-  const v = VS.allVoices[index];
-  if (!v) return;
+  const engVoices = VS.allVoices.filter(v=>v.lang.startsWith('en')).slice(0,20);
+  const voice = engVoices[index];
+  if (!voice) return;
   speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance('Hello! This is how I sound.');
-  utt.voice = v;
-  utt.rate = parseFloat(document.getElementById('vsSpeed')?.value || 1);
-  utt.pitch = parseFloat(document.getElementById('vsPitch')?.value || 1);
-  speechSynthesis.speak(utt);
+  const u = new SpeechSynthesisUtterance('Hello, this is a voice preview');
+  u.voice = voice; u.rate=1; u.pitch=1;
+  speechSynthesis.speak(u);
 }
 
 function vsPreviewVoice() {
-  if (!VS.selectedVoice) { vsLoadVoices().then(() => vsPreviewVoice()); return; }
   const script = document.getElementById('vsScript')?.value.trim();
-  const text = script ? script.substring(0, 120) : 'This is a preview of your selected voice. It sounds great for social media videos.';
+  if (!script) { toast('Add a script first', 'info'); return; }
   speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance(text);
-  utt.voice = VS.selectedVoice;
-  utt.rate = parseFloat(document.getElementById('vsSpeed')?.value || 1);
-  utt.pitch = parseFloat(document.getElementById('vsPitch')?.value || 1);
-  VS.speaking = true;
+  const u = new SpeechSynthesisUtterance(script.substring(0,120));
+  if (VS.selectedVoice) u.voice = VS.selectedVoice;
+  u.rate = parseFloat(document.getElementById('vsSpeed')?.value||1);
+  u.pitch = parseFloat(document.getElementById('vsPitch')?.value||1);
   document.getElementById('vsStopBtn').style.display = 'inline-flex';
-  document.getElementById('vsVoiceStatus').textContent = '🎙️ Speaking...';
-  utt.onend = () => {
-    VS.speaking = false;
+  document.getElementById('vsVoiceStatus').textContent = '🔊 Speaking...';
+  u.onend = () => {
     document.getElementById('vsStopBtn').style.display = 'none';
-    document.getElementById('vsVoiceStatus').textContent = '✅ Preview done';
+    document.getElementById('vsVoiceStatus').textContent = '';
   };
-  speechSynthesis.speak(utt);
+  speechSynthesis.speak(u);
 }
 
 function vsStopVoice() {
   speechSynthesis.cancel();
-  VS.speaking = false;
   document.getElementById('vsStopBtn').style.display = 'none';
   document.getElementById('vsVoiceStatus').textContent = '';
 }
 
-function vsUpdateSpeedLabel(v) { document.getElementById('vsSpeedLabel').textContent = parseFloat(v).toFixed(2) + '×'; }
+function vsUpdateSpeedLabel(v) { document.getElementById('vsSpeedLabel').textContent = parseFloat(v).toFixed(2)+'×'; }
 function vsUpdatePitchLabel(v) { document.getElementById('vsPitchLabel').textContent = parseFloat(v).toFixed(2); }
 
-// ── Platform Selection ──
 function vsSelectPlatform(btn) {
-  btn.closest('.platform-grid').querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#vsPlatformGrid .platform-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('vsPlatform').value = btn.dataset.val;
-  const labels = { tiktok:'9:16 · TikTok / Reels', instagram:'9:16 · Instagram Reels', twitter:'9:16 · X Vertical' };
-  const fl = document.getElementById('vsFormatLabel');
-  if (fl) fl.textContent = labels[btn.dataset.val] || '9:16';
-}
-
-// ── Word/time estimate ──
-function vsUpdateWordEstimate() {
-  const script = document.getElementById('vsScript')?.value.trim() || '';
-  const words = script.split(/\s+/).filter(Boolean).length;
-  const wpm = 140;
-  const secs = Math.round((words / wpm) * 60);
-  const el = document.getElementById('vsWordEstimate');
-  if (el) el.textContent = `~${words} words · Est. read time: ${secs} sec`;
-  const dl = document.getElementById('vsDurationLabel');
-  if (dl) dl.textContent = `~${secs} sec`;
-}
-
-// ── Background Presets ──
-function vsRenderBgGrid() {
-  const grid = document.getElementById('vsBgGrid');
-  if (!grid) return;
-  grid.innerHTML = VS.BG_PRESETS.map((bg, i) => {
-    const grad = bg.colors.length > 1
-      ? `linear-gradient(160deg,${bg.colors.join(',')})`
-      : bg.colors[0];
-    return `<div onclick="vsSelectBg(${i},this)" data-bg="${i}" style="height:52px;border-radius:8px;background:${grad};cursor:pointer;border:2px solid ${i===0?'var(--accent)':'var(--border)'};transition:all .2s;position:relative;overflow:hidden" title="${bg.label}">
-      <div style="position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:.55rem;color:rgba(255,255,255,.7);font-weight:600">${bg.label}</div>
-    </div>`;
-  }).join('');
-}
-
-function vsSelectBg(i, el) {
-  document.querySelectorAll('#vsBgGrid > div').forEach(d => d.style.borderColor = 'var(--border)');
-  if (el) el.style.borderColor = 'var(--accent)';
-  document.getElementById('vsBgStyle').value = i;
+  const val = btn.dataset.val;
+  document.getElementById('vsPlatform').value = val;
+  const labels = { tiktok:'9:16 · TikTok / Reels', instagram:'9:16 · Instagram Reels', youtube:'9:16 · YouTube Shorts', twitter:'9:16 · X/Twitter', linkedin:'1:1 · LinkedIn', facebook:'9:16 · Facebook Reels' };
+  document.getElementById('vsFormatLabel').textContent = labels[val]||'9:16';
   vsRenderPreview();
+}
+
+function vsUpdateWordEstimate() {
+  const text = document.getElementById('vsScript')?.value || '';
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const secs = Math.round(words / 2.5);
+  document.getElementById('vsWordEstimate').textContent = words > 0 ? `(~${secs}s read, ${words} words)` : '';
+  document.getElementById('vsDurationLabel').textContent = words > 0 ? `~${secs} sec` : '—';
 }
 
 function vsSetTextColor(hex, el) {
@@ -4388,705 +5477,356 @@ function vsSetTextColor(hex, el) {
   vsRenderPreview();
 }
 
-// ── Canvas Preview Render ──
-function vsRenderPreview() {
-  const canvas = document.getElementById('vsCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-
-  const bgIdx = parseInt(document.getElementById('vsBgStyle')?.value || 0);
-  const bg = VS.BG_PRESETS[bgIdx];
-  const textColor = document.getElementById('vsTextColor')?.value || '#ffffff';
-  const fontSize = parseInt(document.getElementById('vsFontSize')?.value || 42);
-  const textStyle = document.getElementById('vsTextStyle')?.value || 'bold';
-  const watermark = document.getElementById('vsWatermark')?.value || '';
-  const script = document.getElementById('vsScript')?.value.trim() || 'Your script will appear here...';
-  const animType = document.getElementById('vsTextAnim')?.value || 'word-by-word';
-
-  // Background
-  if (bg.colors.length > 1) {
-    const grd = ctx.createLinearGradient(0, 0, W * 0.3, H);
-    bg.colors.forEach((c, i) => grd.addColorStop(i / (bg.colors.length - 1), c));
-    ctx.fillStyle = grd;
-  } else {
-    ctx.fillStyle = bg.colors[0];
-  }
-  ctx.fillRect(0, 0, W, H);
-
-  // Subtle grain overlay
-  ctx.save();
-  ctx.globalAlpha = 0.04;
-  for (let y = 0; y < H; y += 4) {
-    for (let x = 0; x < W; x += 4) {
-      if (Math.random() > 0.5) {
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(x, y, 2, 2);
-      }
-    }
-  }
-  ctx.restore();
-
-  // Vignette
-  const vig = ctx.createRadialGradient(W/2, H/2, H*0.2, W/2, H/2, H*0.8);
-  vig.addColorStop(0, 'rgba(0,0,0,0)');
-  vig.addColorStop(1, 'rgba(0,0,0,0.6)');
-  ctx.fillStyle = vig;
-  ctx.fillRect(0, 0, W, H);
-
-  // Platform badge
-  const platform = document.getElementById('vsPlatform')?.value || 'tiktok';
-  const platIcons = { tiktok:'TikTok', instagram:'Instagram', twitter:'X/Twitter' };
-  ctx.save();
-  ctx.font = 'bold 14px DM Sans, sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  ctx.textAlign = 'right';
-  ctx.fillText(platIcons[platform] || platform, W - 20, 34);
-  ctx.restore();
-
-  // Subtitle bar — draw BEFORE text so it sits behind the words
-  if (animType === 'subtitle') {
-    ctx.save();
-    ctx.fillStyle = 'rgba(0,0,0,0.65)';
-    const barH = 80;
-    ctx.fillRect(0, H - barH - 60, W, barH + 20);
-    ctx.restore();
-  }
-
-  // Text rendering
-  ctx.save();
-  ctx.fillStyle = textColor;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-
-  const displayScript = animType === 'subtitle' 
-    ? script.split('.')[0].trim() 
-    : animType === 'word-by-word'
-      ? script.split(/\s+/).slice(0, 5).join(' ')
-      : animType === 'typewriter'
-        ? script.substring(0, 60) + (script.length > 60 ? '|' : '')
-        : script.substring(0, 200);
-
-  // Apply text style
-  if (textStyle === 'glow') {
-    ctx.shadowColor = textColor;
-    ctx.shadowBlur = 20;
-  } else if (textStyle === 'shadow') {
-    ctx.shadowColor = 'rgba(0,0,0,0.8)';
-    ctx.shadowBlur = 8;
-    ctx.shadowOffsetX = 3;
-    ctx.shadowOffsetY = 3;
-  }
-
-  ctx.font = `${textStyle === 'bold' ? 900 : 700} ${fontSize}px Syne, sans-serif`;
-
-  if (textStyle === 'outline') {
-    ctx.strokeStyle = '#000';
-    ctx.lineWidth = 6;
-    ctx.lineJoin = 'round';
-    vsWrapText(ctx, displayScript, W/2, animType === 'subtitle' ? H - 120 : H/2, W - 60, fontSize * 1.3, true);
-  }
-  vsWrapText(ctx, displayScript, W/2, animType === 'subtitle' ? H - 120 : H/2, W - 60, fontSize * 1.3, false);
-
-  ctx.restore();
-
-  // Watermark
-  if (watermark) {
-    ctx.save();
-    ctx.font = 'bold 18px DM Sans, sans-serif';
-    ctx.fillStyle = 'rgba(255,255,255,0.55)';
-    ctx.textAlign = 'center';
-    ctx.shadowColor = 'rgba(0,0,0,0.5)';
-    ctx.shadowBlur = 6;
-    ctx.fillText(watermark, W/2, H - 40);
-    ctx.restore();
-  }
-
-  // Safe zone lines (subtle)
-  ctx.save();
-  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-  ctx.lineWidth = 1;
-  ctx.setLineDash([4, 8]);
-  ctx.beginPath(); ctx.moveTo(40, 0); ctx.lineTo(40, H); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(W-40, 0); ctx.lineTo(W-40, H); ctx.stroke();
-  ctx.restore();
-}
-
-function vsWrapText(ctx, text, x, y, maxWidth, lineHeight, stroke = false) {
-  const words = text.split(' ');
-  let line = '';
-  const lines = [];
-  for (const word of words) {
-    const test = line + (line ? ' ' : '') + word;
-    if (ctx.measureText(test).width > maxWidth && line) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = test;
-    }
-  }
-  if (line) lines.push(line);
-  const totalH = lines.length * lineHeight;
-  const startY = y - totalH / 2;
-  lines.forEach((l, i) => {
-    const ly = startY + i * lineHeight + lineHeight / 2;
-    if (stroke) ctx.strokeText(l, x, ly);
-    else ctx.fillText(l, x, ly);
-  });
-}
-
 // ── AI Script Generation ──
 async function vsGenerateScript() {
   const topic = document.getElementById('vsTopic')?.value.trim();
-  if (!topic) { toast('Enter a topic first', 'error'); return; }
   const platform = document.getElementById('vsPlatform')?.value || 'tiktok';
   const duration = document.getElementById('vsDuration')?.value || '30';
   const tone = document.getElementById('vsTone')?.value || 'hook-heavy';
+  if (!topic) { toast('Enter a topic first', 'info'); return; }
   const btn = document.getElementById('vsGenScriptBtn');
-  const origHTML = btn.innerHTML;
-  btn.innerHTML = `<div class="spinner"></div> Writing Script...`;
-  btn.disabled = true;
-
-  const toneDesc = {
-    'hook-heavy': 'Every sentence is a hook. Relentless forward momentum. No filler. Each line earns the next.',
-    'storytelling': 'Opens with a personal story/scenario that hooks. Builds tension. Delivers revelation. Ends with lesson.',
-    'educational': 'Fast-paced facts. Numbered points. Clear structure. Starts with bold claim, delivers proof.',
-    'hype': 'High energy. Short punchy sentences. Exclamation and urgency. Motivational and electric.',
-    'calm': 'Calm authority. Measured pace. Each sentence lands with weight. Expert confidence without shouting.'
-  };
-
-  const wpm = 140;
-  const targetWords = Math.round((parseInt(duration) / 60) * wpm);
-
-  const prompt = `Write a VIRAL ${platform} video script about: "${topic}"
-
-TARGET: Exactly ${targetWords} words (for ${duration} seconds at natural speaking pace)
-TONE: ${toneDesc[tone]}
-PLATFORM: ${platform} — optimized for that platform's algorithm and audience
-
-RULES:
-1. FIRST LINE must be an unmissable hook (pattern interrupt, bold claim, or shocking stat)
-2. Zero filler words ("um", "so", "basically", "you know")
-3. Every sentence must earn its place — if it doesn't move the video forward, cut it
-4. Natural spoken rhythm — write how a charismatic human SPEAKS, not how they write
-5. End with a strong CTA (follow, comment, save)
-6. No hashtags, no emojis in script — clean spoken words only
-
-OUTPUT: Just the script text. No [directions], no timestamps, no labels. Pure spoken words ready to be read aloud.`;
-
+  btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Generating...';
   try {
-    const response = await fetch((getBackendURL() || '') + '/api/claude', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-AI-Provider': getAIProvider() },
-      body: JSON.stringify({ prompt, provider: getAIProvider(), maxTokens: 600 })
-    });
-    if (!response.ok) throw new Error('API error');
-    const data = await response.json();
-    const result = data.text || '';
-    const scriptEl = document.getElementById('vsScript');
-    if (scriptEl) {
-      scriptEl.value = result.trim();
-      updateCharCount(scriptEl, 'vsScriptCount', 1000);
-      vsUpdateWordEstimate();
-      vsRenderPreview();
-    }
-    toast('Script generated! ✅', 'success');
-  } catch(e) {
-    toast('Script generation failed — check backend connection', 'error');
-  } finally {
-    btn.innerHTML = origHTML;
-    btn.disabled = false;
-  }
+    const res = await callClaude(`You are an expert viral video scriptwriter with 20 years experience. Write a ${duration}-second ${platform} video script.
+
+Topic: "${topic}"
+Tone: ${tone}
+Platform: ${platform}
+
+Requirements:
+- Start with a POWERFUL hook in the first 3 seconds
+- Use short punchy sentences (5-10 words max per sentence)
+- Include emotional triggers and power words
+- End with a strong CTA
+- NO stage directions, NO scene labels, ONLY the spoken words
+- Write EXACTLY what should be spoken, optimized for text-to-speech
+
+Output ONLY the script text, nothing else.`);
+    document.getElementById('vsScript').value = res;
+    updateCharCount(document.getElementById('vsScript'), 'vsScriptCount', 1000);
+    vsUpdateWordEstimate();
+    vsExtractKeywords();
+    vsRenderPreview();
+    toast('✅ Script generated!', 'success');
+  } catch(e) { toast('Script generation failed: '+e.message,'error'); }
+  finally { btn.disabled=false; btn.innerHTML='🧠 AI Write Script'; }
 }
 
 async function vsEnhanceScript() {
   const script = document.getElementById('vsScript')?.value.trim();
-  if (!script || script.length < 20) { toast('Write or generate a script first', 'error'); return; }
+  if (!script) { toast('Write a script first', 'info'); return; }
   const btn = document.getElementById('vsEnhanceBtn');
-  const origHTML = btn.innerHTML;
-  btn.innerHTML = `<div class="spinner"></div> Enhancing...`;
-  btn.disabled = true;
-
-  const prompt = `You are an elite speechwriter and viral content strategist.
-
-ENHANCE this video script to make it 10x more powerful:
-
-ORIGINAL:
-${script}
-
-ENHANCEMENT RULES:
-1. Preserve the core message and approximate length
-2. Make every single sentence SHARPER — cut dead weight, punch up language
-3. Improve the hook (first line must grab instantly)
-4. Add power words and emotional triggers where natural
-5. Improve rhythm — vary sentence length strategically (short punchy sentences mixed with longer flowing ones)
-6. Make it sound like a charismatic speaker who absolutely commands attention
-7. Strengthen the ending/CTA
-8. Keep it natural spoken language — no written-text formality
-
-OUTPUT: Just the enhanced script. No explanation. No labels. Pure enhanced spoken words.`;
-
+  btn.disabled=true; btn.innerHTML='<div class="spinner"></div> Enhancing...';
   try {
-    const response = await fetch((getBackendURL() || '') + '/api/claude', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-AI-Provider': getAIProvider() },
-      body: JSON.stringify({ prompt, provider: getAIProvider(), maxTokens: 600 })
-    });
-    if (!response.ok) throw new Error('API error');
-    const data = await response.json();
-    const result = data.text || '';
-    const scriptEl = document.getElementById('vsScript');
-    if (scriptEl) {
-      scriptEl.value = result.trim();
-      updateCharCount(scriptEl, 'vsScriptCount', 1000);
-      vsUpdateWordEstimate();
-      vsRenderPreview();
-    }
-    toast('Script enhanced! ✨', 'success');
-  } catch(e) {
-    toast('Enhancement failed — check backend connection', 'error');
-  } finally {
-    btn.innerHTML = origHTML;
-    btn.disabled = false;
-  }
+    const res = await callClaude(`You are a master viral video scriptwriter. Enhance this script to be MORE viral, punchy, and engaging. Keep it the same length but make every word count. Use power words, pattern interrupts, and emotional triggers. Output ONLY the enhanced script text.\n\nOriginal:\n${script}`);
+    document.getElementById('vsScript').value = res;
+    updateCharCount(document.getElementById('vsScript'), 'vsScriptCount', 1000);
+    vsUpdateWordEstimate();
+    vsExtractKeywords();
+    vsRenderPreview();
+    toast('✨ Script enhanced!', 'success');
+  } catch(e) { toast('Enhancement failed: '+e.message,'error'); }
+  finally { btn.disabled=false; btn.innerHTML='✨ AI Enhance'; }
 }
 
-// ── Video Recording Engine ──
-let vsRecordedChunks = [];
+// ── Recording Engine ──
 let vsMediaRecorder = null;
-let vsRenderInterval = null;
-let vsCurrentWordIdx = 0;
-let vsAllWords = [];
-let vsSpeechStartTime = 0;
-let vsAudioStream = null;
+let vsVideoChunks = [];
 let vsIsRecording = false;
+let vsRenderInterval = null;
 
 async function vsStartRecording() {
+  if (vsIsRecording) { toast('Already recording...', 'info'); return; }
   const script = document.getElementById('vsScript')?.value.trim();
-  if (!script || script.length < 5) { toast('Write a script first', 'error'); return; }
-  if (vsIsRecording) { toast('Recording in progress...', 'info'); return; }
-
-  // Ensure voices loaded
-  if (VS.allVoices.length === 0) await vsLoadVoices();
-  // Try to pick a voice if none selected
-  if (!VS.selectedVoice && VS.allVoices.length > 0) {
-    VS.selectedVoice = VS.allVoices[0];
-  }
-
-  speechSynthesis.cancel();
-  await new Promise(r => setTimeout(r, 200)); // Small pause to let cancel finish
+  if (!script) { toast('⚠️ Add a script first', 'warn'); return; }
 
   const canvas = document.getElementById('vsCanvas');
-  const btn = document.getElementById('vsRecordBtn');
-  const statusEl = document.getElementById('vsRecordStatus');
-  const progWrap = document.getElementById('vsProgressWrap');
-  const progBar = document.getElementById('vsProgressBar');
-  const progPct = document.getElementById('vsProgressPct');
-  const progLabel = document.getElementById('vsProgressLabel');
+  const sceneId = document.getElementById('vsScene')?.value || 'space';
+  const quality = document.getElementById('vsQuality')?.value || 'standard';
+  const intensity = parseFloat(document.getElementById('vsIntensity')?.value || 0.7);
+  const captStyle = document.getElementById('vsCaptionStyle')?.value || 'word-pop';
+  const textColor = document.getElementById('vsTextColor')?.value || '#ffffff';
+  const fontSize = parseInt(document.getElementById('vsFontSize')?.value || 44);
+  const watermark = document.getElementById('vsWatermark')?.value || '';
+  const speed = parseFloat(document.getElementById('vsSpeed')?.value || 1);
+  const pitch = parseFloat(document.getElementById('vsPitch')?.value || 1);
+
+  vsInitSceneParticles(sceneId);
 
   vsIsRecording = true;
-  btn.innerHTML = `<div class="spinner"></div> Recording...`;
-  btn.disabled = true;
-  progWrap.style.display = 'block';
-  progBar.style.width = '0%';
-  progPct.textContent = '0%';
-  progLabel.textContent = 'Preparing canvas stream...';
-  statusEl.innerHTML = '🎬 <strong>Recording started.</strong> Voice is syncing with animation...';
+  const statusEl = document.getElementById('vsRecordStatus');
+  const progressWrap = document.getElementById('vsProgressWrap');
+  const progressBar = document.getElementById('vsProgressBar');
+  const progressLabel = document.getElementById('vsProgressLabel');
+  const progressPct = document.getElementById('vsProgressPct');
+  const renderLog = document.getElementById('vsRenderLog');
+  const recordBtn = document.getElementById('vsRecordBtn');
+  const downloadBtn = document.getElementById('vsDownloadBtn');
+
+  recordBtn.disabled = true;
+  recordBtn.innerHTML = '<div class="spinner"></div> Rendering...';
+  progressWrap.style.display = 'block';
   document.getElementById('vsVideoResult').style.display = 'none';
-  document.getElementById('vsDownloadBtn').style.display = 'none';
+  downloadBtn.style.display = 'none';
+  vsVideoChunks = [];
 
-  vsAllWords = script.split(/\s+/).filter(Boolean);
-  vsCurrentWordIdx = 0;
-  vsRecordedChunks = [];
+  // === PHASE 1: Capture canvas stream ===
+  progressLabel.textContent = '🎬 Starting canvas capture...';
+  progressBar.style.width = '5%'; progressPct.textContent = '5%';
+  renderLog.textContent += 'Initializing 30fps canvas recorder...\n';
 
-  // Check if captureStream is supported
-  if (typeof canvas.captureStream !== 'function') {
-    vsIsRecording = false;
-    btn.innerHTML = '🎬 Record & Generate Video';
-    btn.disabled = false;
-    statusEl.innerHTML = '⚠️ Your browser does not support canvas video capture. Please use Chrome or Edge.';
-    toast('Use Chrome or Edge for video recording', 'error');
+  let canvasStream;
+  try {
+    canvasStream = canvas.captureStream(30);
+  } catch(e) {
+    toast('⚠️ Canvas capture not supported. Use Chrome/Edge.', 'error');
+    vsIsRecording=false; recordBtn.disabled=false; recordBtn.innerHTML='🎬 Render & Export Video';
+    progressWrap.style.display='none';
     return;
   }
 
-  // Setup canvas stream
-  const canvasStream = canvas.captureStream(30);
+  // === PHASE 2: TTS audio ===
+  progressLabel.textContent = '🎙️ Synthesizing voice...';
+  progressBar.style.width = '15%'; progressPct.textContent = '15%';
+  renderLog.textContent += 'Rendering TTS audio...\n';
 
-  // Try to get audio destination stream for mixing with speech
-  let combinedStream = canvasStream;
-  let audioCtx = null;
-  let dest = null;
-  try {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 44100 });
-    dest = audioCtx.createMediaStreamDestination();
-    // Create a silent oscillator to keep audio track alive (needed for MediaRecorder)
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    gain.gain.value = 0; // silent
-    osc.connect(gain);
-    gain.connect(dest);
-    osc.start();
-    // Combine video + audio tracks
-    combinedStream = new MediaStream([
-      ...canvasStream.getVideoTracks(),
-      ...dest.stream.getAudioTracks()
-    ]);
-  } catch(e) {
-    console.warn('Audio context setup failed, recording video only:', e.message);
-    combinedStream = canvasStream;
-  }
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const dest = audioCtx.createMediaStreamDestination();
 
-  // Find best supported MIME type
-  const mimeType = [
-    'video/webm;codecs=vp9,opus',
-    'video/webm;codecs=vp8,opus',
-    'video/webm;codecs=h264,opus',
-    'video/webm',
-    'video/mp4'
-  ].find(t => {
-    try { return MediaRecorder.isTypeSupported(t); } catch(e) { return false; }
-  }) || 'video/webm';
+  // Combine canvas + audio
+  const combinedStream = new MediaStream([
+    ...canvasStream.getVideoTracks(),
+    ...dest.stream.getAudioTracks()
+  ]);
 
-  try {
-    vsMediaRecorder = new MediaRecorder(combinedStream, {
-      mimeType,
-      videoBitsPerSecond: 4_000_000,
-      audioBitsPerSecond: 128_000
-    });
-  } catch(e) {
-    // Fallback without options
-    try { vsMediaRecorder = new MediaRecorder(combinedStream); }
-    catch(e2) {
-      vsIsRecording = false;
-      btn.innerHTML = '🎬 Record & Generate Video';
-      btn.disabled = false;
-      statusEl.innerHTML = `⚠️ MediaRecorder failed: ${e2.message}. Use Chrome/Edge.`;
-      return;
-    }
-  }
+  // TTS setup
+  const words = script.split(/\s+/).filter(Boolean);
+  VS.words = words;
+  VS.currentWordIndex = 0;
 
-  vsMediaRecorder.ondataavailable = e => {
-    if (e.data && e.data.size > 0) vsRecordedChunks.push(e.data);
-  };
-  vsMediaRecorder.onstop = () => {
-    if (audioCtx) try { audioCtx.close(); } catch(e) {}
-    vsOnRecordingStop();
-  };
-  vsMediaRecorder.onerror = (e) => {
-    console.error('MediaRecorder error:', e);
-    clearInterval(vsRenderInterval);
-    speechSynthesis.cancel();
-    vsIsRecording = false;
-    btn.innerHTML = '🎬 Record & Generate Video';
-    btn.disabled = false;
-    statusEl.innerHTML = `⚠️ Recording error: ${e.error?.message || 'Unknown error'}`;
-  };
-
-  vsMediaRecorder.start(250); // collect chunks every 250ms for reliability
-  progLabel.textContent = 'Recording in progress...';
-
-  // Speech synthesis utterance
-  const rate = parseFloat(document.getElementById('vsSpeed')?.value || 1.0);
-  const pitch = parseFloat(document.getElementById('vsPitch')?.value || 1.0);
-
-  // Estimate duration for progress bar (140 WPM baseline)
-  const wordsPerSec = (rate * 140) / 60;
-  const totalEstSec = Math.max(vsAllWords.length / wordsPerSec, 1);
-  const startTime = performance.now();
-
-  // Canvas animation loop - runs independently at 30fps
-  vsRenderInterval = setInterval(() => {
-    const elapsed = (performance.now() - startTime) / 1000;
-    const progress = Math.min(elapsed / totalEstSec, 1);
-    vsCurrentWordIdx = Math.min(Math.floor(progress * vsAllWords.length), vsAllWords.length - 1);
-    vsRenderLiveFrame(vsCurrentWordIdx);
-    const pct = Math.round(progress * 100);
-    progBar.style.width = pct + '%';
-    progPct.textContent = pct + '%';
-    progLabel.textContent = `Recording... ${Math.round(elapsed)}s / ~${Math.round(totalEstSec)}s`;
-  }, 33);
-
-  // Create and speak utterance
   const utt = new SpeechSynthesisUtterance(script);
   if (VS.selectedVoice) utt.voice = VS.selectedVoice;
-  utt.rate = rate;
-  utt.pitch = pitch;
-  utt.volume = 1;
+  utt.rate = speed; utt.pitch = pitch;
 
-  // Word boundary tracking for better sync
+  let speechDone = false;
+  let estimatedDuration = (words.length / 2.5 / speed) * 1000;
+  let startTime = null;
+
   utt.onboundary = (e) => {
-    if (e.name === 'word' && e.charIndex !== undefined) {
-      // Count approximate word index from char position
-      const textSoFar = script.substring(0, e.charIndex);
-      const wordCount = textSoFar.split(/\s+/).filter(Boolean).length;
-      vsCurrentWordIdx = Math.min(wordCount, vsAllWords.length - 1);
-    }
-  };
-
-  utt.onend = () => {
-    // Speech finished - let canvas finish animating then stop recording
-    clearInterval(vsRenderInterval);
-    vsRenderLiveFrame(vsAllWords.length); // show final frame
-    progBar.style.width = '100%';
-    progPct.textContent = '100%';
-    progLabel.textContent = '✅ Finalizing video...';
-    statusEl.innerHTML = '⏳ Finalizing video file...';
-
-    // Wait a moment for last frames to be captured then stop
-    setTimeout(() => {
-      if (vsMediaRecorder && vsMediaRecorder.state !== 'inactive') {
-        vsMediaRecorder.stop();
-      } else {
-        vsIsRecording = false;
-        btn.innerHTML = '🎬 Record Again';
-        btn.disabled = false;
+    if (e.name === 'word') {
+      const charIdx = e.charIndex;
+      let wordIdx = 0, count = 0;
+      for (let i = 0; i < words.length; i++) {
+        count += words[i].length + 1;
+        if (count >= charIdx) { wordIdx = i; break; }
       }
-    }, 1000);
-  };
-
-  utt.onerror = (e) => {
-    clearInterval(vsRenderInterval);
-    if (vsMediaRecorder?.state !== 'inactive') vsMediaRecorder.stop();
-    vsIsRecording = false;
-    const errMsg = e.error || 'unknown';
-    statusEl.innerHTML = `⚠️ Voice error: <strong>${errMsg}</strong>. ${errMsg === 'interrupted' ? 'Try clicking Record again.' : 'Try selecting a different voice.'}`;
-    btn.innerHTML = '🎬 Record & Generate Video';
-    btn.disabled = false;
-    toast(`Voice error: ${errMsg}`, 'error');
-  };
-
-  // Small delay before speaking to let recorder initialize
-  setTimeout(() => {
-    try {
-      speechSynthesis.speak(utt);
-    } catch(e) {
-      clearInterval(vsRenderInterval);
-      if (vsMediaRecorder?.state !== 'inactive') vsMediaRecorder.stop();
-      vsIsRecording = false;
-      btn.innerHTML = '🎬 Record & Generate Video';
-      btn.disabled = false;
-      statusEl.innerHTML = '⚠️ Failed to start speech. Reload the page and try again.';
+      VS.currentWordIndex = wordIdx;
     }
-  }, 300);
-}
+  };
 
-function vsRenderLiveFrame(wordIdx) {
-  const canvas = document.getElementById('vsCanvas');
-  if (!canvas) return;
+  utt.onend = () => { speechDone = true; };
+  utt.onerror = (e) => {
+    if (e.error !== 'interrupted') { speechDone = true; }
+  };
+
+  // MediaRecorder
+  const mimeTypes = ['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm','video/mp4'];
+  let recorder;
+  for (const mime of mimeTypes) {
+    try {
+      if (MediaRecorder.isTypeSupported(mime)) {
+        const bitsPerSecond = quality==='hd' ? 4000000 : quality==='standard' ? 2500000 : 1500000;
+        recorder = new MediaRecorder(combinedStream, { mimeType: mime, videoBitsPerSecond: bitsPerSecond });
+        renderLog.textContent += `Using codec: ${mime}\n`;
+        break;
+      }
+    } catch(e) {}
+  }
+  if (!recorder) {
+    try { recorder = new MediaRecorder(combinedStream); }
+    catch(e) { toast('MediaRecorder not supported. Use Chrome.','error'); vsIsRecording=false; recordBtn.disabled=false; recordBtn.innerHTML='🎬 Render & Export Video'; progressWrap.style.display='none'; return; }
+  }
+
+  vsMediaRecorder = recorder;
+  recorder.ondataavailable = e => { if (e.data && e.data.size > 0) vsVideoChunks.push(e.data); };
+  recorder.onstop = vsOnRecordingStop;
+  recorder.start(200);
+
+  // === PHASE 3: Animation render loop ===
+  progressLabel.textContent = '🎨 Rendering cinematic frames...';
+  progressBar.style.width = '25%'; progressPct.textContent = '25%';
+
+  startTime = performance.now();
+  let frameIdx = 0;
+
+  // Start TTS
+  speechSynthesis.cancel();
+  setTimeout(() => speechSynthesis.speak(utt), 200);
+
   const ctx = canvas.getContext('2d');
   const W = canvas.width, H = canvas.height;
-  const animType = document.getElementById('vsTextAnim')?.value || 'word-by-word';
-  const textColor = document.getElementById('vsTextColor')?.value || '#ffffff';
-  const fontSize = parseInt(document.getElementById('vsFontSize')?.value || 42);
-  const textStyle = document.getElementById('vsTextStyle')?.value || 'bold';
-  const watermark = document.getElementById('vsWatermark')?.value || '';
-  const bgIdx = parseInt(document.getElementById('vsBgStyle')?.value || 0);
-  const bg = VS.BG_PRESETS[bgIdx];
 
-  // Background
-  if (bg.colors.length > 1) {
-    const grd = ctx.createLinearGradient(0, 0, W * 0.3, H);
-    bg.colors.forEach((c, i) => grd.addColorStop(i / (bg.colors.length - 1), c));
-    ctx.fillStyle = grd;
-  } else {
-    ctx.fillStyle = bg.colors[0];
-  }
-  ctx.fillRect(0, 0, W, H);
+  function renderFrame() {
+    if (!vsIsRecording) return;
+    const elapsed = performance.now() - startTime;
+    const progress = Math.min(1, elapsed / estimatedDuration);
+    const wordIdx = Math.floor(progress * words.length);
+    VS.currentWordIndex = Math.min(wordIdx, words.length - 1);
+    VS.sceneTime = frameIdx;
 
-  // Vignette
-  const vig = ctx.createRadialGradient(W/2, H/2, H*0.2, W/2, H/2, H*0.8);
-  vig.addColorStop(0, 'rgba(0,0,0,0)');
-  vig.addColorStop(1, 'rgba(0,0,0,0.55)');
-  ctx.fillStyle = vig;
-  ctx.fillRect(0, 0, W, H);
+    // Draw scene
+    vsDrawScene(ctx, W, H, sceneId, frameIdx, intensity);
 
-  // Subtitle bar — draw BEFORE text so it doesn't cover it
-  if (animType === 'subtitle') {
-    ctx.save();
-    ctx.fillStyle = 'rgba(0,0,0,0.65)';
-    const barH = 80;
-    ctx.fillRect(0, H - barH - 60, W, barH + 20);
-    ctx.restore();
-  }
+    // Draw caption — use sliding window of words for word-pop
+    let captionText = '';
+    if (captStyle === 'word-pop') {
+      const start = Math.max(0, VS.currentWordIndex - 1);
+      const chunk = words.slice(start, start + 4);
+      captionText = chunk.join(' ');
+    } else if (captStyle === 'subtitle' || captStyle === 'typewriter') {
+      captionText = script.substring(0, Math.floor(progress * script.length * 1.1));
+    } else if (captStyle === 'karaoke') {
+      // Show current line
+      const lineSize = 8;
+      const lineIdx = Math.floor(VS.currentWordIndex / lineSize);
+      captionText = words.slice(lineIdx*lineSize, lineIdx*lineSize+lineSize).join(' ');
+    } else {
+      captionText = words.slice(Math.max(0,VS.currentWordIndex-2), VS.currentWordIndex+5).join(' ');
+    }
 
-  // Determine display text based on animation type
-  let displayWords = [];
-  const allW = vsAllWords;
-  const WINDOW = animType === 'word-by-word' ? 1 : animType === 'typewriter' ? 8 : animType === 'subtitle' ? 6 : 12;
+    vsDrawCaption(ctx, W, H, captionText, captStyle, textColor, fontSize, progress, frameIdx);
+    vsDrawOverlays(ctx, W, H, progress, frameIdx, watermark);
 
-  if (animType === 'word-by-word') {
-    // Highlight current word — show 3 words context
-    const start = Math.max(0, wordIdx - 1);
-    const chunk = allW.slice(start, start + 3);
-    displayWords = chunk;
-  } else if (animType === 'typewriter') {
-    displayWords = allW.slice(Math.max(0, wordIdx - WINDOW), wordIdx + 1);
-  } else if (animType === 'subtitle') {
-    const lineStart = Math.floor(wordIdx / WINDOW) * WINDOW;
-    displayWords = allW.slice(lineStart, lineStart + WINDOW);
-  } else if (animType === 'fade-lines') {
-    const lineStart = Math.floor(wordIdx / 8) * 8;
-    displayWords = allW.slice(lineStart, lineStart + 8);
-  } else {
-    // full — show all
-    displayWords = allW;
-  }
+    // Update progress UI
+    const pct = Math.round(20 + progress * 70);
+    progressBar.style.width = pct + '%'; progressPct.textContent = pct + '%';
+    progressLabel.textContent = `🎬 Rendering... ${Math.round(progress*100)}% (${Math.round(elapsed/1000)}s)`;
 
-  const displayText = displayWords.join(' ');
+    frameIdx++;
 
-  // Text rendering
-  ctx.save();
-  ctx.fillStyle = textColor;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.font = `${textStyle === 'bold' ? 900 : 700} ${fontSize}px Syne, sans-serif`;
-
-  const textY = animType === 'subtitle' ? H - 130 : H / 2;
-
-  if (textStyle === 'glow') {
-    ctx.shadowColor = textColor; ctx.shadowBlur = 22;
-  } else if (textStyle === 'shadow') {
-    ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 10; ctx.shadowOffsetX = 3; ctx.shadowOffsetY = 3;
-  } else if (textStyle === 'outline') {
-    ctx.strokeStyle = '#000'; ctx.lineWidth = 7; ctx.lineJoin = 'round';
-    vsWrapText(ctx, displayText, W/2, textY, W - 60, fontSize * 1.35, true);
+    if (!speechDone && progress < 1.05) {
+      vsRenderInterval = setTimeout(renderFrame, 1000/30);
+    } else {
+      // Render a few more frames after speech ends
+      if (frameIdx < (estimatedDuration/1000+1)*30) {
+        vsRenderInterval = setTimeout(renderFrame, 1000/30);
+      } else {
+        progressLabel.textContent = '💾 Finalizing video...';
+        progressBar.style.width = '95%'; progressPct.textContent = '95%';
+        setTimeout(() => {
+          if (recorder.state !== 'inactive') recorder.stop();
+          audioCtx.close();
+          vsIsRecording = false;
+        }, 500);
+      }
+    }
   }
 
-  // Pulse effect on current word
-  if (animType === 'word-by-word') {
-    const pulse = 1 + Math.sin(Date.now() / 150) * 0.04;
-    ctx.save();
-    ctx.translate(W/2, textY);
-    ctx.scale(pulse, pulse);
-    ctx.translate(-W/2, -textY);
-    vsWrapText(ctx, displayText, W/2, textY, (W - 60) / pulse, fontSize * 1.35, false);
-    ctx.restore();
-  } else {
-    vsWrapText(ctx, displayText, W/2, textY, W - 60, fontSize * 1.35, false);
-  }
-  ctx.restore();
-
-  // Watermark
-  if (watermark) {
-    ctx.save();
-    ctx.font = 'bold 16px DM Sans, sans-serif';
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
-    ctx.textAlign = 'center';
-    ctx.shadowColor = 'rgba(0,0,0,0.5)';
-    ctx.shadowBlur = 6;
-    ctx.fillText(watermark, W/2, H - 36);
-    ctx.restore();
-  }
-
-  // Progress indicator
-  const pct = allW.length > 0 ? wordIdx / allW.length : 0;
-  ctx.save();
-  ctx.fillStyle = 'rgba(255,255,255,0.15)';
-  ctx.fillRect(0, H - 6, W, 6);
-  ctx.fillStyle = 'rgba(99,102,241,0.9)';
-  ctx.fillRect(0, H - 6, W * pct, 6);
-  ctx.restore();
+  vsRenderInterval = setTimeout(renderFrame, 300);
 }
 
 function vsOnRecordingStop() {
   vsIsRecording = false;
-  clearInterval(vsRenderInterval);
-  speechSynthesis.cancel();
+  clearTimeout(vsRenderInterval);
 
-  const btn = document.getElementById('vsRecordBtn');
-  const statusEl = document.getElementById('vsRecordStatus');
-  const progLabel = document.getElementById('vsProgressLabel');
+  const progressBar = document.getElementById('vsProgressBar');
+  const progressLabel = document.getElementById('vsProgressLabel');
+  const progressPct = document.getElementById('vsProgressPct');
+  const recordBtn = document.getElementById('vsRecordBtn');
+  const downloadBtn = document.getElementById('vsDownloadBtn');
+  const result = document.getElementById('vsVideoResult');
+  const videoEl = document.getElementById('vsOutputVideo');
 
-  btn.innerHTML = '🎬 Record Again';
-  btn.disabled = false;
-
-  if (vsRecordedChunks.length === 0) {
-    statusEl.innerHTML = '⚠️ No video data was captured. Make sure you are using <strong>Chrome or Edge</strong>, then try again.';
-    progLabel.textContent = '❌ Recording failed';
-    toast('Recording failed — use Chrome or Edge', 'error');
+  if (vsVideoChunks.length === 0) {
+    toast('⚠️ No video data captured. Try Chrome/Edge.','error');
+    recordBtn.disabled=false; recordBtn.innerHTML='🎬 Render & Export Video';
+    document.getElementById('vsProgressWrap').style.display='none';
     return;
   }
 
   const mimeType = vsMediaRecorder?.mimeType || 'video/webm';
-  VS.recordedBlob = new Blob(vsRecordedChunks, { type: mimeType });
+  VS.recordedBlob = new Blob(vsVideoChunks, { type: mimeType });
   const url = URL.createObjectURL(VS.recordedBlob);
-  const sizeMB = (VS.recordedBlob.size / (1024 * 1024)).toFixed(1);
 
-  const video = document.getElementById('vsOutputVideo');
-  if (video) { video.src = url; video.load(); }
+  progressBar.style.width = '100%'; progressPct.textContent = '100%';
+  progressLabel.textContent = '✅ Video rendered successfully!';
 
-  const resultEl = document.getElementById('vsVideoResult');
-  if (resultEl) resultEl.style.display = 'block';
+  videoEl.src = url;
+  result.style.display = 'block';
+  downloadBtn.style.display = 'block';
+  recordBtn.disabled = false;
+  recordBtn.innerHTML = '🔄 Re-render Video';
 
-  const dlBtn = document.getElementById('vsDownloadBtn');
-  if (dlBtn) { dlBtn.style.display = 'inline-flex'; }
+  const sizeMB = (VS.recordedBlob.size / 1024 / 1024).toFixed(1);
+  document.getElementById('vsRecordStatus').innerHTML = `✅ Video ready — ${sizeMB}MB · ${mimeType.split('/')[1].split(';')[0].toUpperCase()}`;
+  toast(`🎬 HD Video ready (${sizeMB}MB)!`, 'success', 5000);
 
-  document.getElementById('vsProgressBar').style.width = '100%';
-  document.getElementById('vsProgressPct').textContent = '100%';
-  progLabel.textContent = '✅ Video ready to download!';
-  statusEl.innerHTML = `✅ <strong>Video recorded!</strong> ${sizeMB}MB · ${mimeType.includes('mp4') ? 'MP4' : 'WebM'} · Ready to upload to TikTok, Reels, or X`;
-
-  toast('🎬 Video ready! Click Download.', 'success');
   vsRenderPreview();
-  
-  // Save to Supabase if backend configured
-  if (window.SMM_BACKEND_URL) {
-    sbSave('videos', { size_mb: sizeMB, mime: mimeType, created_at: new Date().toISOString() }).catch(() => {});
-  }
 }
 
 function vsDownloadVideo() {
-  if (!VS.recordedBlob) { toast('Record a video first — click "Record & Generate Video"', 'error'); return; }
-  const ext = VS.recordedBlob.type.includes('mp4') ? 'mp4' : 'webm';
-  const platform = document.getElementById('vsPlatform')?.value || 'video';
+  if (!VS.recordedBlob) { toast('No video to download', 'info'); return; }
+  const mimeType = VS.recordedBlob.type || 'video/webm';
+  const ext = mimeType.includes('mp4') ? 'mp4' : 'webm';
   const url = URL.createObjectURL(VS.recordedBlob);
   const a = document.createElement('a');
-  a.href = url;
-  a.download = `smm-pro-${platform}-${Date.now()}.${ext}`;
-  document.body.appendChild(a);
+  const platform = document.getElementById('vsPlatform')?.value || 'video';
+  const topic = document.getElementById('vsTopic')?.value.replace(/[^a-z0-9]/gi,'_').substring(0,30) || 'video';
+  a.href = url; a.download = `${platform}_${topic}_${Date.now()}.${ext}`;
   a.click();
-  document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 5000);
-  toast(`✅ Downloading .${ext} video!`, 'success');
+  toast(`✅ Downloading ${ext.toUpperCase()} video!`, 'success');
+}
+
+function vsStartNew() {
+  VS.recordedBlob = null;
+  document.getElementById('vsVideoResult').style.display='none';
+  document.getElementById('vsDownloadBtn').style.display='none';
+  document.getElementById('vsProgressWrap').style.display='none';
+  document.getElementById('vsRecordBtn').innerHTML='🎬 Render & Export Video';
+  document.getElementById('vsRecordStatus').textContent='';
+  document.getElementById('vsScript').value='';
+  document.getElementById('vsScriptCount').textContent='0 / 1000';
+  document.getElementById('vsWordEstimate').textContent='';
+  document.getElementById('vsKeywordBar').style.display='none';
+  document.getElementById('vsSlideStrip').style.display='none';
+  VS.slides=[]; VS.currentSlide=0;
+  vsRenderPreview();
+  toast('🎬 Ready for a new video!','info');
 }
 
 // ── Init Video Studio on nav ──
 function vsInit() {
-  vsRenderBgGrid();
+  vsRenderSceneGrid();
+  vsInitSceneParticles(document.getElementById('vsScene')?.value || 'space');
   vsRenderPreview();
   vsUpdateWordEstimate();
-  // Browser compatibility check
   const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
   const isEdge = /Edg/.test(navigator.userAgent);
   const warn = document.getElementById('vsBrowserWarning');
   if (warn) warn.style.display = (!isChrome && !isEdge) ? 'block' : 'none';
-  // Load voices with retry
   vsLoadVoices().then(voices => {
     if (voices.length === 0) {
-      // iOS/Safari sometimes needs a user gesture first
-      document.getElementById('vsVoiceGrid').innerHTML = 
-        '<div style="color:var(--warn);font-size:.82rem;padding:.5rem;grid-column:1/-1">⚠️ Voices not loaded. Click "Preview Voice" to trigger loading, or tap anywhere and try again.</div>';
+      document.getElementById('vsVoiceGrid').innerHTML = '<div style="color:var(--warn);font-size:.82rem;padding:.5rem;grid-column:1/-1">⚠️ No voices loaded. Click "Preview Voice" or use Chrome/Edge.</div>';
     }
   });
-  // Hide play overlay
-  const overlay = document.getElementById('vsPlayOverlay');
-  if (overlay) overlay.style.display = 'none';
 }
 
 // Hook nav to init VS when visited
 const _origNav = nav;
 window.nav = function(id) {
-  // If navigating away from video studio mid-record, cancel gracefully
   if (id !== 'video-studio' && vsIsRecording) {
     speechSynthesis.cancel();
-    clearInterval(vsRenderInterval);
+    clearTimeout(vsRenderInterval);
     if (vsMediaRecorder && vsMediaRecorder.state !== 'inactive') vsMediaRecorder.stop();
     vsIsRecording = false;
+    if (VS.livePreviewActive) { VS.livePreviewActive=false; cancelAnimationFrame(VS.animFrame); }
   }
   _origNav(id);
   if (id === 'video-studio') setTimeout(vsInit, 150);
   if (id === 'settings') setTimeout(renderSettingsTab, 50);
 };
+
+
 
 // ═══════════════════════════════════════════════════════════════
 // SUPABASE DATA SYNC
