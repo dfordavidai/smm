@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,14 +34,14 @@ html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-height:100vh}
 
 /* Animated bg grain */
-body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;pointer-events:none!important;z-index:-1}
-body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,102,241,.08) 0,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(236,72,153,.06) 0,transparent 60%);pointer-events:none!important;z-index:-1}
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,102,241,.08) 0,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(236,72,153,.06) 0,transparent 60%);pointer-events:none;z-index:0}
 
 /* ─── HEADER ─── */
-.header{position:sticky;top:0;z-index:100;background:rgba(7,8,12,.96);border-bottom:1px solid var(--border);padding:.75rem 1rem}
+.header{position:sticky;top:0;z-index:100;background:rgba(7,8,12,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 1rem}
 .header-inner{display:flex;align-items:center;gap:1rem;max-width:1400px;margin:0 auto}
 .logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;background:var(--grd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;flex-shrink:0}
-.header-nav-wrap{flex:1;overflow:visible;position:relative}
+.header-nav-wrap{flex:1;overflow:hidden;position:relative}
 .header-nav-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,rgba(7,8,12,.9));pointer-events:none}
 .header-nav{display:flex;gap:.375rem;overflow-x:auto;scrollbar-width:none;padding:.25rem 0}
 .header-nav::-webkit-scrollbar{display:none}
@@ -52,7 +53,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 @media(max-width:640px){.header-badges{display:none}}
 
 /* ─── LAYOUT ─── */
-.app{position:relative;z-index:10;max-width:1400px;margin:0 auto;padding:1.25rem 1rem}
+.app{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:1.25rem 1rem}
 
 /* ─── TOAST ─── */
 #toast-container{position:fixed;top:1rem;right:1rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none}
@@ -203,8 +204,8 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 @media(max-width:768px){.mobile-menu-btn{display:flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:600}}
 
 /* ─── SIDEBAR (Mobile) ─── */
-.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;pointer-events:none;visibility:hidden;backdrop-filter:blur(4px)}
-.sidebar-overlay.show{display:block;pointer-events:auto;visibility:visible}
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;backdrop-filter:blur(4px)}
+.sidebar-overlay.show{display:block}
 .sidebar{position:fixed;left:0;top:0;bottom:0;width:280px;background:var(--bg2);border-right:1px solid var(--border);z-index:201;transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto;padding:1.25rem}
 .sidebar.show{transform:translateX(0)}
 .sidebar-logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;background:var(--grd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.5rem;display:block}
@@ -246,76 +247,6 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .flex{display:flex}.ai-center{align-items:center}.jc-between{justify-content:space-between}.gap1{gap:.5rem}.gap2{gap:1rem}
 .text-sm{font-size:.83rem}.text-xs{font-size:.74rem}.text-muted{color:var(--muted)}.text-accent{color:var(--accent)}.text-white{color:#fff}.font-bold{font-weight:700}
 .hidden{display:none!important}
-
-/* ── SMM PRO iOS/Android Touch Fix v3.0 ── */
-
-/* touch-action:manipulation eliminates 300ms delay on ALL interactables */
-button, .btn, .nav-btn, .tab, .tag, .tool-card, .platform-btn,
-.niche-pill, .accordion-head, .project-item, .swipe-card,
-.sidebar-btn, .mobile-menu-btn, [onclick], [role="button"],
-select, label, input[type="range"] {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(99,102,241,0.15);
-  cursor: pointer;
-}
-
-/* Header nav: allow horizontal pan without swallowing taps */
-.header-nav {
-  touch-action: pan-x;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  /* Clip visually with mask, NOT with overflow:hidden (which kills iOS taps) */
-  -webkit-mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
-  mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
-}
-
-/* The fade pseudo-element is now redundant (mask handles it) but keep it hidden */
-.header-nav-wrap::after { pointer-events: none !important; opacity: 0; }
-
-/* Ensure .app is always above body overlays */
-.app { position: relative; z-index: 10; }
-
-/* Toast never blocks taps */
-#toast-container { pointer-events: none; }
-.toast { pointer-events: auto; }
-
-/* Accordion arrow doesn't intercept taps */
-.accordion-arrow { pointer-events: none; }
-
-/* Minimum tap target sizes */
-.tag, .niche-pill { min-height: 36px; display: inline-flex; align-items: center; justify-content: center; }
-.tool-card, .project-item, .swipe-card, .accordion-head { -webkit-user-select: none; user-select: none; }
-
-/* Scrollable row containers */
-.tabs, .tags, .niche-grid, .platform-grid, #vsVoiceGrid, #vsSceneGrid, #vsSlideList {
-  touch-action: pan-x;
-  -webkit-overflow-scrolling: touch;
-}
-
-@media (max-width: 640px) {
-  .platform-btn { min-height: 60px; padding: 0.75rem 0.4rem; }
-  .nav-btn      { min-height: 44px; padding: 0.45rem 0.85rem; }
-  .btn          { min-height: 48px; }
-  .tab          { min-height: 44px; }
-}
-
-/* Active visual feedback (iOS has no :hover) */
-@media (hover: none) {
-  .btn:active           { opacity:0.8; transform:scale(0.97); }
-  .tool-card:active     { transform:scale(0.96)!important; border-color:var(--accent)!important; background:rgba(99,102,241,.08)!important; }
-  .nav-btn:active       { background:rgba(99,102,241,.15); color:var(--text); }
-  .tag:active           { background:rgba(99,102,241,.2); border-color:var(--accent); color:var(--accent); }
-  .project-item:active  { border-color:var(--accent); background:rgba(99,102,241,.05); }
-  .accordion-head:active{ background:rgba(255,255,255,.04); }
-  .sidebar-btn:active   { background:rgba(99,102,241,.12); color:var(--accent); }
-  .tab:active           { background:rgba(99,102,241,.1); border-color:var(--accent); color:var(--accent); }
-  .platform-btn:active  { border-color:var(--accent); color:var(--accent); background:rgba(99,102,241,.1); }
-}
-
-#vsCanvas     { touch-action: none; }
-#mediaDropZone{ touch-action: manipulation; }
-input[type="range"] { height: 28px; }
-
 </style>
 </head>
 <body>
@@ -6183,134 +6114,6 @@ function exportData() {
   a.click();
   toast('Data exported', 'success');
 }
-
-
-
-/* ── SMM PRO iOS/Android Touch Fix JS v3.0 ── */
-(function() {
-  'use strict';
-
-  /* ── 1. iOS Safari "click on div" fix ──────────────────────
-     iOS Safari will NOT fire click on non-button/non-anchor elements
-     UNLESS they have cursor:pointer CSS AND a native event listener.
-     Attaching addEventListener('click') is the magic that enables it. */
-  function enableIOSTaps(root) {
-    root = root || document;
-    var sel = [
-      '[onclick]',
-      '.tool-card', '.tag', '.niche-pill', '.project-item',
-      '.swipe-card', '.accordion-head', '.metric-card', '.platform-btn',
-      '.tab', '.sidebar-btn'
-    ].join(',');
-    root.querySelectorAll(sel).forEach(function(el) {
-      if (el._iosEnabled) return;
-      el._iosEnabled = true;
-      el.style.cursor = 'pointer';
-      el.style.touchAction = 'manipulation';
-      /* This empty listener is NOT pointless — it's the iOS Safari unlock */
-      el.addEventListener('click', function(){});
-    });
-  }
-
-  /* ── 2. Global touchend→click for divs ──────────────────────
-     For any div/span with onclick that iOS still won't fire natively,
-     intercept touchend and call the handler ourselves. */
-  var _tx = 0, _ty = 0;
-  document.addEventListener('touchstart', function(e) {
-    _tx = e.touches[0].clientX;
-    _ty = e.touches[0].clientY;
-  }, { passive: true });
-
-  document.addEventListener('touchend', function(e) {
-    var dx = Math.abs(e.changedTouches[0].clientX - _tx);
-    var dy = Math.abs(e.changedTouches[0].clientY - _ty);
-    if (dx > 12 || dy > 12) return; // scroll, not tap
-
-    var el = e.target;
-    for (var depth = 0; depth < 6; depth++) {
-      if (!el || el === document.body) break;
-      /* Native elements handle themselves */
-      if (el.tagName === 'BUTTON' || el.tagName === 'A' ||
-          el.tagName === 'INPUT' || el.tagName === 'SELECT') break;
-      var handler = el.getAttribute('onclick');
-      if (handler) {
-        e.preventDefault(); /* kill ghost click 350ms later */
-        try { (new Function(handler)).call(el); }
-        catch(err) { el.click(); }
-        return;
-      }
-      el = el.parentElement;
-    }
-  }, { passive: false });
-
-  /* ── 3. Sidebar: force out of hit-test tree when closed ─────── */
-  var _origClose = window.closeSidebar;
-  window.closeSidebar = function() {
-    if (typeof _origClose === 'function') _origClose();
-    var o = document.getElementById('sidebarOverlay');
-    var s = document.getElementById('sidebar');
-    if (o) {
-      o.classList.remove('show');
-      o.style.cssText = 'display:none!important;pointer-events:none!important;visibility:hidden!important;';
-    }
-    if (s) s.classList.remove('show');
-    document.body.style.overflow = '';
-  };
-
-  var _origOpen = window.openSidebar;
-  window.openSidebar = function() {
-    var o = document.getElementById('sidebarOverlay');
-    var s = document.getElementById('sidebar');
-    if (o) {
-      o.style.cssText = '';
-      o.style.display = 'block';
-      o.style.pointerEvents = 'auto';
-      o.style.visibility = 'visible';
-      requestAnimationFrame(function(){ o.classList.add('show'); });
-    }
-    if (s) s.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  };
-
-  /* ── 4. Accordion touch delegate ── */
-  document.addEventListener('touchend', function(e) {
-    var dx = Math.abs(e.changedTouches[0].clientX - _tx);
-    var dy = Math.abs(e.changedTouches[0].clientY - _ty);
-    if (dx > 12 || dy > 12) return;
-    var head = e.target.closest && e.target.closest('.accordion-head');
-    if (head && typeof toggleAccordion === 'function') {
-      e.preventDefault();
-      toggleAccordion(head);
-    }
-  }, { passive: false });
-
-  /* ── 5. Canvas — stop iOS scroll rubber-band ── */
-  var canvas = document.getElementById('vsCanvas');
-  if (canvas) {
-    canvas.addEventListener('touchstart', function(e){ e.preventDefault(); }, { passive:false });
-    canvas.addEventListener('touchmove',  function(e){ e.preventDefault(); }, { passive:false });
-  }
-
-  /* ── 6. MutationObserver: catch dynamically added elements ── */
-  var observer = new MutationObserver(function(muts) {
-    muts.forEach(function(m) {
-      m.addedNodes.forEach(function(n) {
-        if (n.nodeType === 1) enableIOSTaps(n);
-      });
-    });
-  });
-
-  /* ── Init ── */
-  function init() {
-    enableIOSTaps();
-    observer.observe(document.body, { childList:true, subtree:true });
-    console.log('[SMM Fix v3.0] Applied');
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
-})();
 
 </script>
 </body>
