@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -246,6 +247,183 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .flex{display:flex}.ai-center{align-items:center}.jc-between{justify-content:space-between}.gap1{gap:.5rem}.gap2{gap:1rem}
 .text-sm{font-size:.83rem}.text-xs{font-size:.74rem}.text-muted{color:var(--muted)}.text-accent{color:var(--accent)}.text-white{color:#fff}.font-bold{font-weight:700}
 .hidden{display:none!important}
+
+/* ── SMM PRO MOBILE FIX v1.0 ── */
+
+body::before,
+body::after {
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+.header-nav-wrap::after {
+  pointer-events: none !important;
+}
+
+.btn,
+.nav-btn,
+.tab,
+.tag,
+.tool-card,
+.platform-btn,
+.niche-pill,
+.accordion-head,
+.project-item,
+.swipe-card,
+.sidebar-btn,
+.mobile-menu-btn,
+button,
+[onclick],
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(99, 102, 241, 0.15);
+  cursor: pointer;
+}
+
+.header-nav,
+.tabs,
+.tags,
+.niche-grid,
+.platform-grid,
+#vsVoiceGrid,
+#vsSceneGrid,
+#vsSlideList {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebar-overlay:not(.show) {
+  pointer-events: none !important;
+  display: none !important;
+  visibility: hidden !important;
+}
+.sidebar-overlay.show {
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.app {
+  position: relative;
+  z-index: 2;
+}
+
+#toast-container {
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+}
+
+.tag,
+.niche-pill {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-card,
+.project-item,
+.swipe-card,
+.accordion-head {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.accordion-arrow {
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .platform-btn {
+    min-height: 60px;
+    padding: 0.75rem 0.4rem;
+  }
+  .nav-btn {
+    min-height: 38px;
+    padding: 0.45rem 0.85rem;
+  }
+  .btn {
+    min-height: 48px;
+  }
+  .tab {
+    min-height: 36px;
+  }
+  .table td,
+  .table th {
+    padding: 1rem 0.75rem;
+  }
+}
+
+@media (hover: none) {
+  .btn:active {
+    opacity: 0.8;
+    transform: scale(0.97);
+    transition: transform 0.05s, opacity 0.05s;
+  }
+  .tool-card:active {
+    transform: translateY(0) scale(0.96) !important;
+    border-color: var(--accent) !important;
+    background: rgba(99, 102, 241, 0.08) !important;
+  }
+  .nav-btn:active {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--text);
+  }
+  .nav-btn.active:active {
+    opacity: 0.85;
+  }
+  .tag:active {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .project-item:active {
+    border-color: var(--accent);
+    background: rgba(99, 102, 241, 0.05);
+  }
+  .accordion-head:active {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .sidebar-btn:active {
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--accent);
+  }
+  .tab:active {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .platform-btn:active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(99, 102, 241, 0.1);
+  }
+  .swipe-card:active {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+#vsCanvas {
+  touch-action: none;
+}
+
+#mediaDropZone {
+  touch-action: manipulation;
+}
+
+.output-actions .btn {
+  min-width: 60px;
+  min-height: 36px;
+}
+
+input[type="range"] {
+  touch-action: pan-x;
+  height: 28px;
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -6113,6 +6291,158 @@ function exportData() {
   a.click();
   toast('Data exported', 'success');
 }
+
+
+// ── SMM PRO MOBILE TOUCH FIX ENGINE v1.0 ─────────────────
+(function mobileTouchFix() {
+  const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (!isMobile) return;
+
+  const _origClose = window.closeSidebar;
+  window.closeSidebar = function() {
+    if (typeof _origClose === 'function') _origClose();
+    const overlay = document.getElementById('sidebarOverlay');
+    const sidebar = document.getElementById('sidebar');
+    if (overlay) {
+      overlay.classList.remove('show');
+      overlay.style.cssText += ';display:none!important;pointer-events:none!important;visibility:hidden!important;';
+    }
+    if (sidebar) sidebar.classList.remove('show');
+    document.body.style.overflow = '';
+    document.body.style.touchAction = '';
+  };
+
+  const _origOpen = window.openSidebar;
+  window.openSidebar = function() {
+    const overlay = document.getElementById('sidebarOverlay');
+    const sidebar = document.getElementById('sidebar');
+    if (overlay) {
+      overlay.style.cssText = '';
+      overlay.style.display = 'block';
+      overlay.style.pointerEvents = 'auto';
+      overlay.style.visibility = 'visible';
+      requestAnimationFrame(() => overlay.classList.add('show'));
+    }
+    if (sidebar) sidebar.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+  };
+
+  function fixClickableDivs(root) {
+    root = root || document;
+    const sel = [
+      'div[onclick]',
+      'div.tool-card',
+      'div.tag',
+      'div.niche-pill',
+      'div.project-item',
+      'div.swipe-card',
+      'div.accordion-head',
+      'div.metric-card',
+      'div.platform-btn',
+    ].join(',');
+
+    root.querySelectorAll(sel).forEach(el => {
+      if (el.dataset.mobileFixed) return;
+      el.dataset.mobileFixed = '1';
+      if (!el.getAttribute('role')) el.setAttribute('role', 'button');
+      if (!el.getAttribute('tabindex')) el.setAttribute('tabindex', '0');
+
+      let touchStartX = 0, touchStartY = 0, touchMoved = false;
+
+      el.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchMoved = false;
+      }, { passive: true });
+
+      el.addEventListener('touchmove', e => {
+        const dx = Math.abs(e.touches[0].clientX - touchStartX);
+        const dy = Math.abs(e.touches[0].clientY - touchStartY);
+        if (dx > 8 || dy > 8) touchMoved = true;
+      }, { passive: true });
+
+      el.addEventListener('touchend', function(e) {
+        if (touchMoved) return;
+        const onclickAttr = this.getAttribute('onclick');
+        if (onclickAttr) {
+          e.preventDefault();
+          try {
+            const fn = new Function(onclickAttr);
+            fn.call(this);
+          } catch(err) {
+            this.click();
+          }
+        }
+      }, { passive: false });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      fixClickableDivs();
+      observeDOMChanges();
+    });
+  } else {
+    fixClickableDivs();
+    observeDOMChanges();
+  }
+
+  function observeDOMChanges() {
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(m => {
+        m.addedNodes.forEach(node => {
+          if (node.nodeType === 1) fixClickableDivs(node);
+        });
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const headerNav = document.getElementById('headerNav');
+    if (!headerNav) return;
+    let scrollStartX = 0, isScrollingNav = false;
+    headerNav.addEventListener('touchstart', e => {
+      scrollStartX = e.touches[0].clientX;
+      isScrollingNav = false;
+    }, { passive: true });
+    headerNav.addEventListener('touchmove', e => {
+      if (Math.abs(e.touches[0].clientX - scrollStartX) > 10) isScrollingNav = true;
+    }, { passive: true });
+    headerNav.addEventListener('touchend', e => {
+      if (isScrollingNav) e.stopImmediatePropagation();
+    }, { passive: false });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('touchend', function(e) {
+      const head = e.target.closest('.accordion-head');
+      if (!head) return;
+      e.preventDefault();
+      toggleAccordion(head);
+    }, { passive: false });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('vsCanvas');
+    if (canvas) {
+      canvas.addEventListener('touchstart', e => e.preventDefault(), { passive: false });
+      canvas.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+    }
+  });
+
+  document.addEventListener('touchend', function(e) {
+    const tab = e.target.closest('.tab');
+    if (!tab || e.defaultPrevented) return;
+    const onclickStr = tab.getAttribute('onclick');
+    if (onclickStr && !tab.dataset.mobileFixed) {
+      e.stopPropagation();
+    }
+  }, { passive: false });
+
+  console.log('[SMM Mobile Fix v1.0] All touch fixes applied');
+})();
 
 </script>
 </body>
