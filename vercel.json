@@ -1,7 +1,16 @@
 {
   "version": 2,
-  "name": "smm-pro-backend",
+  "name": "smm-pro",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ],
   "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    },
     {
       "source": "/api/(.*)",
       "headers": [
