@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -248,18 +247,42 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .text-sm{font-size:.83rem}.text-xs{font-size:.74rem}.text-muted{color:var(--muted)}.text-accent{color:var(--accent)}.text-white{color:#fff}.font-bold{font-weight:700}
 .hidden{display:none!important}
 
-/* ── SMM PRO MOBILE FIX v1.0 ── */
+/* ════════════════════════════════════════
+   SMM PRO — DEFINITIVE MOBILE FIX v2.0
+   Targets: iOS Safari, iOS Chrome, Android Chrome
+   ════════════════════════════════════════ */
 
-body::before,
-body::after {
+/* 1. Kill body pseudo-elements — they sit above .app on Android WebViews */
+body::before, body::after {
   z-index: -1 !important;
   pointer-events: none !important;
 }
 
-.header-nav-wrap::after {
-  pointer-events: none !important;
+/* 2. Raise .app clearly above body pseudo-elements */
+.app {
+  position: relative;
+  z-index: 2;
 }
 
+/* 3. iOS Safari: overflow scroll containers block child button taps.
+   The ONLY fix that works on iOS is -webkit-overflow-scrolling:touch
+   + ensuring the container itself doesn't consume pointer events.
+   We also set will-change to create a proper compositing layer. */
+.header-nav {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  will-change: scroll-position;
+}
+
+/* 4. The right-edge gradient fade on nav was eating taps */
+.header-nav-wrap::after {
+  pointer-events: none !important;
+  z-index: 0;
+}
+
+/* 5. Eliminate 300ms tap delay on ALL interactive elements.
+   touch-action:manipulation is the single most important fix for iOS. */
+button,
 .btn,
 .nav-btn,
 .tab,
@@ -272,157 +295,87 @@ body::after {
 .swipe-card,
 .sidebar-btn,
 .mobile-menu-btn,
-button,
 [onclick],
-[role="button"] {
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+label {
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(99, 102, 241, 0.15);
   cursor: pointer;
 }
 
-.header-nav,
-.tabs,
-.tags,
-.niche-grid,
-.platform-grid,
-#vsVoiceGrid,
-#vsSceneGrid,
-#vsSlideList {
+/* 6. Horizontal scroll strips — pan-x so scrolling works but
+   taps on buttons still fire */
+.tabs, .tags, .niche-grid, .platform-grid,
+#vsVoiceGrid, #vsSceneGrid, #vsSlideList {
   touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
 }
 
-.sidebar-overlay:not(.show) {
-  pointer-events: none !important;
-  display: none !important;
-  visibility: hidden !important;
+/* 7. Sidebar overlay: completely non-interactive when closed.
+   display:none alone is not enough on iOS Safari sometimes. */
+.sidebar-overlay {
+  pointer-events: none;
+  display: none;
+  visibility: hidden;
 }
 .sidebar-overlay.show {
-  pointer-events: auto;
+  pointer-events: auto !important;
+  display: block !important;
+  visibility: visible !important;
   touch-action: none;
 }
 
-.app {
-  position: relative;
-  z-index: 2;
-}
+/* 8. Toast must never block taps */
+#toast-container { pointer-events: none; }
+.toast { pointer-events: auto; }
 
-#toast-container {
-  pointer-events: none;
-}
-.toast {
-  pointer-events: auto;
-}
+/* 9. Accordion arrow must not intercept taps */
+.accordion-arrow { pointer-events: none; }
 
-.tag,
-.niche-pill {
+/* 10. Minimum tap targets (Apple HIG: 44px, Google: 48px) */
+.tag, .niche-pill {
   min-height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-
-.tool-card,
-.project-item,
-.swipe-card,
-.accordion-head {
-  cursor: pointer;
+.tool-card, .project-item, .swipe-card, .accordion-head {
   -webkit-user-select: none;
   user-select: none;
 }
 
-.accordion-arrow {
-  pointer-events: none;
-}
-
 @media (max-width: 640px) {
-  .platform-btn {
-    min-height: 60px;
-    padding: 0.75rem 0.4rem;
-  }
-  .nav-btn {
-    min-height: 38px;
-    padding: 0.45rem 0.85rem;
-  }
-  .btn {
-    min-height: 48px;
-  }
-  .tab {
-    min-height: 36px;
-  }
-  .table td,
-  .table th {
-    padding: 1rem 0.75rem;
-  }
+  .platform-btn { min-height: 60px; padding: 0.75rem 0.4rem; }
+  .nav-btn      { min-height: 44px; padding: 0.45rem 0.85rem; }
+  .btn          { min-height: 48px; }
+  .tab          { min-height: 44px; }
+  .table td, .table th { padding: 1rem 0.75rem; }
 }
 
+/* 11. :active feedback for touch (iOS doesn't do :hover) */
 @media (hover: none) {
-  .btn:active {
-    opacity: 0.8;
-    transform: scale(0.97);
-    transition: transform 0.05s, opacity 0.05s;
-  }
-  .tool-card:active {
-    transform: translateY(0) scale(0.96) !important;
-    border-color: var(--accent) !important;
-    background: rgba(99, 102, 241, 0.08) !important;
-  }
-  .nav-btn:active {
-    background: rgba(99, 102, 241, 0.15);
-    color: var(--text);
-  }
-  .nav-btn.active:active {
-    opacity: 0.85;
-  }
-  .tag:active {
-    background: rgba(99, 102, 241, 0.2);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .project-item:active {
-    border-color: var(--accent);
-    background: rgba(99, 102, 241, 0.05);
-  }
-  .accordion-head:active {
-    background: rgba(255, 255, 255, 0.04);
-  }
-  .sidebar-btn:active {
-    background: rgba(99, 102, 241, 0.12);
-    color: var(--accent);
-  }
-  .tab:active {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .platform-btn:active {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(99, 102, 241, 0.1);
-  }
-  .swipe-card:active {
-    background: rgba(255, 255, 255, 0.03);
-  }
+  .btn:active           { opacity: 0.8; transform: scale(0.97); transition: transform 0.05s, opacity 0.05s; }
+  .tool-card:active     { transform: translateY(0) scale(0.96) !important; border-color: var(--accent) !important; background: rgba(99,102,241,.08) !important; }
+  .nav-btn:active       { background: rgba(99,102,241,.15); color: var(--text); }
+  .nav-btn.active:active{ opacity: 0.85; }
+  .tag:active           { background: rgba(99,102,241,.2); border-color: var(--accent); color: var(--accent); }
+  .project-item:active  { border-color: var(--accent); background: rgba(99,102,241,.05); }
+  .accordion-head:active{ background: rgba(255,255,255,.04); }
+  .sidebar-btn:active   { background: rgba(99,102,241,.12); color: var(--accent); }
+  .tab:active           { background: rgba(99,102,241,.1); border-color: var(--accent); color: var(--accent); }
+  .platform-btn:active  { border-color: var(--accent); color: var(--accent); background: rgba(99,102,241,.1); }
+  .swipe-card:active    { background: rgba(255,255,255,.03); }
 }
 
-#vsCanvas {
-  touch-action: none;
-}
-
-#mediaDropZone {
-  touch-action: manipulation;
-}
-
-.output-actions .btn {
-  min-width: 60px;
-  min-height: 36px;
-}
-
-input[type="range"] {
-  touch-action: pan-x;
-  height: 28px;
-  cursor: pointer;
-}
+/* 12. Canvas / media */
+#vsCanvas { touch-action: none; }
+#mediaDropZone { touch-action: manipulation; }
+.output-actions .btn { min-width: 60px; min-height: 36px; }
+input[type="range"] { touch-action: pan-x; height: 28px; cursor: pointer; }
 
 </style>
 </head>
@@ -6293,155 +6246,177 @@ function exportData() {
 }
 
 
-// ── SMM PRO MOBILE TOUCH FIX ENGINE v1.0 ─────────────────
-(function mobileTouchFix() {
-  const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-  if (!isMobile) return;
 
-  const _origClose = window.closeSidebar;
+/* ════════════════════════════════════════
+   SMM PRO — DEFINITIVE MOBILE FIX JS v2.0
+   ════════════════════════════════════════ */
+(function() {
+  'use strict';
+  var isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+  /* ── A. iOS Safari specific: force-enable clicks everywhere ──
+     iOS Safari refuses to fire click on non-anchor, non-button elements
+     unless cursor:pointer is set OR a click listener is attached.
+     We attach a no-op listener to every div/span with onclick. */
+  function patchClickableElements(root) {
+    root = root || document;
+    // All elements with onclick attributes
+    root.querySelectorAll('[onclick]').forEach(function(el) {
+      if (el.dataset.iosPatchedV2) return;
+      el.dataset.iosPatchedV2 = '1';
+      el.style.cursor = 'pointer';
+      el.style.touchAction = 'manipulation';
+      el.style.webkitTapHighlightColor = 'rgba(99,102,241,0.15)';
+      // This is the iOS Safari magic: attaching any click listener makes the element clickable
+      el.addEventListener('click', function() {});
+    });
+
+    // Semantic clickable classes (some may not have onclick attr)
+    var sel = '.tool-card, .tag, .niche-pill, .project-item, .swipe-card, .accordion-head, .metric-card, .platform-btn';
+    root.querySelectorAll(sel).forEach(function(el) {
+      if (el.dataset.iosPatchedV2) return;
+      el.dataset.iosPatchedV2 = '1';
+      el.style.cursor = 'pointer';
+      el.style.touchAction = 'manipulation';
+      el.addEventListener('click', function() {});
+    });
+  }
+
+  /* ── B. touchend → click bridge for div[onclick] on iOS ──
+     iOS Safari fires click on <a> and <button> reliably.
+     On <div> it often doesn't. We manually fire click on touchend. */
+  var touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    var dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+    var dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+    if (dx > 10 || dy > 10) return; // was a scroll, skip
+
+    var el = e.target;
+    // Walk up DOM max 5 levels to find an onclick handler
+    for (var i = 0; i < 5; i++) {
+      if (!el || el === document.body) break;
+      if (el.tagName === 'BUTTON' || el.tagName === 'A') break; // native, don't interfere
+      var oc = el.getAttribute('onclick');
+      if (oc) {
+        e.preventDefault(); // stop ghost click 300ms later
+        try {
+          (new Function(oc)).call(el);
+        } catch(err) {
+          el.click();
+        }
+        return;
+      }
+      el = el.parentElement;
+    }
+  }, { passive: false });
+
+  /* ── C. Header nav: distinguish scroll from tap ──
+     iOS cancels button clicks when the parent has been scrolled recently.
+     We track scroll state and avoid canceling genuine taps. */
+  function fixHeaderNav() {
+    var nav = document.getElementById('headerNav');
+    if (!nav) return;
+    var scrolled = false, scrollTimer;
+    nav.addEventListener('scroll', function() {
+      scrolled = true;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function() { scrolled = false; }, 150);
+    }, { passive: true });
+    // Ensure button clicks still fire even right after scroll ends
+    nav.addEventListener('touchend', function(e) {
+      if (scrolled) { e.stopPropagation(); }
+    }, { passive: false });
+  }
+
+  /* ── D. Sidebar overlay fix ──
+     Force overlay completely out of hit-test tree when closed. */
+  var _origClose = window.closeSidebar;
   window.closeSidebar = function() {
     if (typeof _origClose === 'function') _origClose();
-    const overlay = document.getElementById('sidebarOverlay');
-    const sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    var sidebar = document.getElementById('sidebar');
     if (overlay) {
       overlay.classList.remove('show');
-      overlay.style.cssText += ';display:none!important;pointer-events:none!important;visibility:hidden!important;';
+      overlay.style.setProperty('display', 'none', 'important');
+      overlay.style.setProperty('pointer-events', 'none', 'important');
+      overlay.style.setProperty('visibility', 'hidden', 'important');
     }
     if (sidebar) sidebar.classList.remove('show');
     document.body.style.overflow = '';
     document.body.style.touchAction = '';
   };
 
-  const _origOpen = window.openSidebar;
+  var _origOpen = window.openSidebar;
   window.openSidebar = function() {
-    const overlay = document.getElementById('sidebarOverlay');
-    const sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    var sidebar = document.getElementById('sidebar');
     if (overlay) {
-      overlay.style.cssText = '';
+      overlay.style.removeProperty('display');
+      overlay.style.removeProperty('pointer-events');
+      overlay.style.removeProperty('visibility');
       overlay.style.display = 'block';
       overlay.style.pointerEvents = 'auto';
       overlay.style.visibility = 'visible';
-      requestAnimationFrame(() => overlay.classList.add('show'));
+      requestAnimationFrame(function() { overlay.classList.add('show'); });
     }
     if (sidebar) sidebar.classList.add('show');
     document.body.style.overflow = 'hidden';
     document.body.style.touchAction = 'none';
   };
 
-  function fixClickableDivs(root) {
-    root = root || document;
-    const sel = [
-      'div[onclick]',
-      'div.tool-card',
-      'div.tag',
-      'div.niche-pill',
-      'div.project-item',
-      'div.swipe-card',
-      'div.accordion-head',
-      'div.metric-card',
-      'div.platform-btn',
-    ].join(',');
-
-    root.querySelectorAll(sel).forEach(el => {
-      if (el.dataset.mobileFixed) return;
-      el.dataset.mobileFixed = '1';
-      if (!el.getAttribute('role')) el.setAttribute('role', 'button');
-      if (!el.getAttribute('tabindex')) el.setAttribute('tabindex', '0');
-
-      let touchStartX = 0, touchStartY = 0, touchMoved = false;
-
-      el.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        touchMoved = false;
-      }, { passive: true });
-
-      el.addEventListener('touchmove', e => {
-        const dx = Math.abs(e.touches[0].clientX - touchStartX);
-        const dy = Math.abs(e.touches[0].clientY - touchStartY);
-        if (dx > 8 || dy > 8) touchMoved = true;
-      }, { passive: true });
-
-      el.addEventListener('touchend', function(e) {
-        if (touchMoved) return;
-        const onclickAttr = this.getAttribute('onclick');
-        if (onclickAttr) {
-          e.preventDefault();
-          try {
-            const fn = new Function(onclickAttr);
-            fn.call(this);
-          } catch(err) {
-            this.click();
-          }
-        }
-      }, { passive: false });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      fixClickableDivs();
-      observeDOMChanges();
-    });
-  } else {
-    fixClickableDivs();
-    observeDOMChanges();
-  }
-
-  function observeDOMChanges() {
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(m => {
-        m.addedNodes.forEach(node => {
-          if (node.nodeType === 1) fixClickableDivs(node);
-        });
-      });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const headerNav = document.getElementById('headerNav');
-    if (!headerNav) return;
-    let scrollStartX = 0, isScrollingNav = false;
-    headerNav.addEventListener('touchstart', e => {
-      scrollStartX = e.touches[0].clientX;
-      isScrollingNav = false;
-    }, { passive: true });
-    headerNav.addEventListener('touchmove', e => {
-      if (Math.abs(e.touches[0].clientX - scrollStartX) > 10) isScrollingNav = true;
-    }, { passive: true });
-    headerNav.addEventListener('touchend', e => {
-      if (isScrollingNav) e.stopImmediatePropagation();
-    }, { passive: false });
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('touchend', function(e) {
-      const head = e.target.closest('.accordion-head');
-      if (!head) return;
+  /* ── E. Accordion touch delegate ── */
+  document.addEventListener('touchend', function(e) {
+    var dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+    var dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+    if (dx > 10 || dy > 10) return;
+    var head = e.target.closest && e.target.closest('.accordion-head');
+    if (!head) return;
+    if (typeof toggleAccordion === 'function') {
       e.preventDefault();
       toggleAccordion(head);
-    }, { passive: false });
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('vsCanvas');
-    if (canvas) {
-      canvas.addEventListener('touchstart', e => e.preventDefault(), { passive: false });
-      canvas.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
-    }
-  });
-
-  document.addEventListener('touchend', function(e) {
-    const tab = e.target.closest('.tab');
-    if (!tab || e.defaultPrevented) return;
-    const onclickStr = tab.getAttribute('onclick');
-    if (onclickStr && !tab.dataset.mobileFixed) {
-      e.stopPropagation();
     }
   }, { passive: false });
 
-  console.log('[SMM Mobile Fix v1.0] All touch fixes applied');
+  /* ── F. Canvas — block scroll rubber-band on iOS ── */
+  function fixCanvas() {
+    var canvas = document.getElementById('vsCanvas');
+    if (canvas) {
+      canvas.addEventListener('touchstart', function(e) { e.preventDefault(); }, { passive: false });
+      canvas.addEventListener('touchmove',  function(e) { e.preventDefault(); }, { passive: false });
+    }
+  }
+
+  /* ── G. MutationObserver: patch dynamic content ── */
+  function observeDOM() {
+    var obs = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        m.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) patchClickableElements(node);
+        });
+      });
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
+
+  /* ── Init ── */
+  function init() {
+    patchClickableElements();
+    fixHeaderNav();
+    fixCanvas();
+    if (isMobile) observeDOM();
+    console.log('[SMM Mobile Fix v2.0] iOS+Android fixes applied');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 
 </script>
