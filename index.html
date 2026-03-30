@@ -1841,11 +1841,11 @@ function loadState() {
   try {
     const saved = localStorage.getItem('smm_state_v2');
     if (saved) Object.assign(STATE, JSON.parse(saved));
-    // Load backend URL
-    const burl = localStorage.getItem('smm_backend_url');
-    if (burl) window.SMM_BACKEND_URL = burl;
-    const bprovider = localStorage.getItem('smm_ai_provider');
-    if (bprovider) window.SMM_AI_PROVIDER = bprovider;
+    // Hardcoded backend — never ask user again
+    window.SMM_BACKEND_URL = 'https://smmtools.vercel.app';
+    window.SMM_AI_PROVIDER = 'groq';
+    localStorage.setItem('smm_backend_url', 'https://smmtools.vercel.app');
+    localStorage.setItem('smm_ai_provider', 'groq');
   } catch(e) {}
 }
 
@@ -2067,11 +2067,7 @@ async function callClaude(prompt, systemPrompt = '') {
   const endpoint = apiBase ? `${apiBase}/api/claude` : '/api/claude';
   const provider = getAIProvider();
 
-  // If no backend configured, show setup modal
-  if (!apiBase && !window._backendWarned) {
-    window._backendWarned = true;
-    showBackendSetupModal();
-  }
+  // Backend is hardcoded — no warning needed
 
   let response;
   try {
@@ -2099,32 +2095,8 @@ async function callClaude(prompt, systemPrompt = '') {
 }
 
 function showBackendSetupModal() {
-  const existing = document.getElementById('backendModal');
-  if (existing) return;
-  const modal = document.createElement('div');
-  modal.id = 'backendModal';
-  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem';
-  modal.innerHTML = `<div style="background:#0e1018;border:1px solid rgba(99,102,241,.4);border-radius:16px;padding:2rem;max-width:500px;width:100%">
-    <div style="font-family:var(--font-head);font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.5rem">⚙️ Connect Your AI Backend</div>
-    <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem">Deploy the backend to Vercel, then enter your URL and choose your AI provider. <strong style="color:var(--accent)">Groq is free</strong> — just add a free API key.</p>
-
-    <label style="font-size:.78rem;font-weight:600;color:var(--muted);display:block;margin-bottom:.35rem">AI PROVIDER</label>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem" id="modalProviderBtns">
-      <button onclick="selectModalProvider('groq')"      id="mpBtn_groq"      style="padding:.6rem .5rem;border-radius:8px;border:2px solid rgba(99,102,241,.5);background:rgba(99,102,241,.15);color:#fff;cursor:pointer;font-size:.78rem;font-weight:600">⚡ Groq<br><span style="font-size:.68rem;color:#a5b4fc">Free Tier</span></button>
-      <button onclick="selectModalProvider('anthropic')" id="mpBtn_anthropic" style="padding:.6rem .5rem;border-radius:8px;border:2px solid rgba(255,255,255,.1);background:transparent;color:#888;cursor:pointer;font-size:.78rem;font-weight:600">🧠 Claude<br><span style="font-size:.68rem">Anthropic</span></button>
-      <button onclick="selectModalProvider('openai')"    id="mpBtn_openai"    style="padding:.6rem .5rem;border-radius:8px;border:2px solid rgba(255,255,255,.1);background:transparent;color:#888;cursor:pointer;font-size:.78rem;font-weight:600">🤖 GPT<br><span style="font-size:.68rem">OpenAI</span></button>
-    </div>
-    <input type="hidden" id="modalSelectedProvider" value="groq">
-
-    <label style="font-size:.78rem;font-weight:600;color:var(--muted);display:block;margin-bottom:.35rem">VERCEL BACKEND URL</label>
-    <input class="input" id="backendUrlInput" placeholder="https://your-app.vercel.app" style="margin-bottom:1rem">
-    <div style="display:flex;gap:.75rem">
-      <button class="btn btn-primary" onclick="saveBackendUrl()" style="flex:1">✅ Connect</button>
-      <button class="btn btn-secondary" onclick="document.getElementById('backendModal').remove()" style="width:auto;padding:.75rem 1rem">Skip</button>
-    </div>
-    <p style="font-size:.72rem;color:var(--muted);margin-top:.75rem;text-align:center">Or go to <strong style="color:var(--text)">⚙️ Settings</strong> tab to configure anytime</p>
-  </div>`;
-  document.body.appendChild(modal);
+  // Backend is hardcoded — modal disabled
+  return;
 }
 
 function selectModalProvider(p) {
@@ -3498,12 +3470,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharts();
     updateAnalyticsMetrics();
   }, 100);
-  // Show backend setup prompt after 2s if not configured
-  setTimeout(() => {
-    if (!window.SMM_BACKEND_URL) {
-      showBackendSetupModal();
-    }
-  }, 2000);
+  // Backend hardcoded — no setup prompt needed
   // Update dashboard with saved metrics
   setTimeout(updateDashboardFromState, 300);
   setTimeout(updateAIBadge, 100);
