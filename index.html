@@ -5034,7 +5034,7 @@ function vsOnRecordingStop() {
   btn.disabled = false;
 
   if (vsRecordedChunks.length === 0) {
-    statusEl.innerHTML = '⚠️ No video data was captured. Make sure you're using <strong>Chrome or Edge</strong>, then try again.';
+    statusEl.innerHTML = '⚠️ No video data was captured. Make sure you are using <strong>Chrome or Edge</strong>, then try again.';
     progLabel.textContent = '❌ Recording failed';
     toast('Recording failed — use Chrome or Edge', 'error');
     return;
@@ -5182,6 +5182,12 @@ function saveState() {
 // ═══════════════════════════════════════════════════════════════
 // SETTINGS TAB
 // ═══════════════════════════════════════════════════════════════
+function getProviderEnvKey(p) {
+  if (p === 'anthropic') return 'ANTHROPIC_API_KEY';
+  if (p === 'openai') return 'OPENAI_API_KEY';
+  return 'GROQ_API_KEY';
+}
+
 function renderSettingsTab() {
   const panel = document.getElementById('settings-panel');
   if (!panel) return;
@@ -5202,7 +5208,7 @@ function renderSettingsTab() {
         </div>
         <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem">
           Make sure the matching env var is set in Vercel:
-          <strong style="color:var(--text)" id="settingsProviderEnvHint">${{groq:'GROQ_API_KEY',anthropic:'ANTHROPIC_API_KEY',openai:'OPENAI_API_KEY'}[aiProvider]}</strong>
+          <strong style="color:var(--text)" id="settingsProviderEnvHint">${getProviderEnvKey(aiProvider)}</strong>
         </div>
       </div>
 
