@@ -1,9 +1,10 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>SMM Command Center Pro — AI Social Media Tool</title>
 <meta name="description" content="AI-powered social media marketing tool. Generate content, scripts, hooks, captions, and record videos. Built for creators and founders.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,16 +30,16 @@
   --font-head: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-height:100vh}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-height:100vh;position:relative}
 
 /* Animated bg grain */
-body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,102,241,.08) 0,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(236,72,153,.06) 0,transparent 60%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:0;-webkit-transform:translateZ(0);transform:translateZ(0)}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,102,241,.08) 0,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(236,72,153,.06) 0,transparent 60%);pointer-events:none;z-index:0;-webkit-transform:translateZ(0);transform:translateZ(0)}
 
 /* ─── HEADER ─── */
-.header{position:sticky;top:0;z-index:100;background:rgba(7,8,12,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 1rem}
+.header{position:sticky;top:0;z-index:100;background:rgba(7,8,12,.85);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 1rem;isolation:isolate}
 .header-inner{display:flex;align-items:center;gap:1rem;max-width:1400px;margin:0 auto}
 .logo{font-family:var(--font-head);font-size:1.1rem;font-weight:800;background:var(--grd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;flex-shrink:0}
 .header-nav-wrap{flex:1;overflow:hidden;position:relative}
@@ -53,7 +54,7 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 @media(max-width:640px){.header-badges{display:none}}
 
 /* ─── LAYOUT ─── */
-.app{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:1.25rem 1rem}
+.app{position:relative;z-index:1;isolation:isolate;max-width:1400px;margin:0 auto;padding:1.25rem 1rem}
 
 /* ─── TOAST ─── */
 #toast-container{position:fixed;top:1rem;right:1rem;z-index:9999;display:flex;flex-direction:column;gap:.5rem;pointer-events:none}
